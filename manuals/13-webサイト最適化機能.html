@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>WEBサイト最適化機能 | FoodLuck MEO操作説明書</title>
+  <link rel="stylesheet" href="../assets/site.css">
+</head>
+<body data-page="manual">
+  <header class="site-header">
+    <a class="brand" href="../index.html">
+      <img src="../assets/brand/logo_foodluckmeo_display.png" alt="FoodLuck MEO">
+      <span>操作説明書</span>
+    </a>
+    <a class="button" href="../index.html#search">検索へ戻る</a>
+  </header>
+  <main class="manual-layout">
+    <aside class="toc-panel">
+      <p class="eyebrow">機能別マニュアル</p>
+      <h1>WEBサイト最適化機能</h1>
+      <p>FoodLuck MEO 操作説明書 13</p>
+      <div class="button-row"><a class="button secondary" href="../assets/pdfs/13_FoodLuck_MEO_WEBサイト最適化機能_操作説明書.pdf" target="_blank" rel="noopener">PDFで見る</a></div>
+      <nav class="toc"><a href="#1-webサイト最適化機能でできること">1. WEBサイト最適化機能でできること</a>
+<a href="#2-店舗側とfoodluck側の役割分担">2. 店舗側とFoodLuck側の役割分担</a>
+<a href="#3-hp連携を使う">3. HP連携を使う</a>
+<a href="#4-グループ連携と店舗別ページの注意">4. グループ連携と店舗別ページの注意</a>
+<a href="#5-hp投稿連携を使う">5. HP投稿連携を使う</a>
+<a href="#6-hp-faq管理を使う">6. HP FAQ管理を使う</a>
+<a href="#7-構造化データを作成する">7. 構造化データを作成する</a>
+<a href="#8-クチコミ評価要約をhpに表示する">8. クチコミ評価要約をHPに表示する</a>
+<a href="#9-よくある困りごと">9. よくある困りごと</a>
+<a href="#10-飲食店の月次チェックリスト">10. 飲食店の月次チェックリスト</a>
+<a href="#11-この資料に反映したfaq記事">11. この資料に反映したFAQ記事</a></nav>
+    </aside>
+    <article class="manual-content" id="content">
+      <div class="manual-meta">
+        <span>機能別マニュアル</span>
+        <span>11 セクション</span>
+        <span>10 画像</span>
+      </div>
+      <p class="lead"><strong>FoodLuck MEO 操作説明書 13</strong></p>
+<p class="lead"><strong>WEBサイト最適化機能</strong></p>
+<p class="lead">HP連携、HP投稿連携、HP FAQ、構造化データ、クチコミ評価要約を正しく使うための現場マニュアル</p>
+<div class="table-wrap"><table><tr><th>この資料の目的 WEBサイト最適化機能は、FoodLuck MEOで管理している店舗情報や投稿、FAQ、クチコミ要約などを自社HPへ表示しやすくする機能です。HTMLタグの設置が関わるため、飲食店の現場では『どの情報がHPに出るのか』『変更時に誰へ依頼するのか』を理解することが大切です。</th></tr></table></div>
+<div class="table-wrap"><table><tr><th>触る人の分担 HPのソースコード、headタグ、bodyタグ、JavaScript、PHPの設置は、原則としてFoodLuck側またはHP制作会社側で対応する項目です。店舗側で直接編集すると、連携タグが消えたり、HP表示が崩れたりする可能性があります。</th></tr></table></div>
+<h2 id="1-webサイト最適化機能でできること">1. WEBサイト最適化機能でできること</h2>
+<p>このカテゴリの機能は、GoogleビジネスプロフィールやFoodLuck MEOに登録した情報を、自社ホームページにも活かすためのものです。Googleだけでなく、公式HPを見たお客様にも営業時間、投稿、FAQ、クチコミ要約などを分かりやすく見せられます。</p>
+<div class="table-wrap"><table><tr><th>機能</th><th>できること</th><th>飲食店での使い方</th><th>注意点</th></tr><tr><td>HP連携</td><td>店舗情報や営業時間をHPに表示し、FoodLuck MEO側の更新をHPへ反映する</td><td>営業時間や住所をGoogleとHPで揃える</td><td>HPへタグ設置が必要</td></tr><tr><td>HP投稿連携</td><td>Google投稿の最新情報やイベントをHPに表示する</td><td>キャンペーンやお知らせをHPにも出す</td><td>反映は深夜バッチ後、翌日目安</td></tr><tr><td>HP FAQ管理</td><td>HPに表示するFAQをFoodLuck MEO側で管理する</td><td>予約、支払い、席、駐車場などのよくある質問を整える</td><td>デザインとタグ発行が必要</td></tr><tr><td>構造化データ作成</td><td>検索エンジンが店舗情報を理解しやすいコードを作る</td><td>公式HPのSEO補助として使う</td><td>HTMLのhead内に設置</td></tr><tr><td>クチコミ評価要約</td><td>Googleクチコミを要約し、HPに表示する</td><td>第三者の声をHP上で見せる</td><td>良い口コミだけを選ぶ機能ではない</td></tr></table></div>
+<p><strong>FAQ画像: HP連携機能のイメージ</strong></p>
+<p><figure><img src="../assets/manual-images/13-webサイト最適化機能-72458b3625.png" alt="WEBサイト最適化機能の画面説明"></figure></p>
+<ul>
+<li>FoodLuck MEOで更新した店舗情報を、GoogleビジネスプロフィールだけでなくHPにも反映するイメージです。</li>
+<li>HPにあらかじめタグを設置しておくことで、HTMLを毎回編集せずに情報更新しやすくなります。</li>
+</ul>
+<h2 id="2-店舗側とfoodluck側の役割分担">2. 店舗側とFoodLuck側の役割分担</h2>
+<div class="table-wrap"><table><tr><th>作業</th><th>主な担当</th><th>理由</th></tr><tr><td>HPにタグを設置する</td><td>FoodLuck側・HP制作会社側</td><td>HTMLやソースコードの編集が必要</td></tr><tr><td>営業時間や住所を修正する</td><td>店舗側またはFoodLuck側</td><td>FoodLuck MEO上の店舗基本情報を正しく更新する</td></tr><tr><td>HP表示がおかしい時の確認</td><td>FoodLuck側・HP制作会社側</td><td>タグ、HP側の構造、外部環境の確認が必要</td></tr><tr><td>投稿やFAQの内容を考える</td><td>店舗側</td><td>お客様に伝えたい内容は現場が一番分かる</td></tr><tr><td>構造化データやクチコミ要約タグをHPに貼る</td><td>FoodLuck側・HP制作会社側</td><td>head/bodyなど設置場所の判断が必要</td></tr></table></div>
+<div class="table-wrap"><table><tr><th>店舗側でやらないほうがよいこと HPのソースコードを直接編集すると、初期設定で設置した連携タグが消える可能性があります。営業時間や住所を変える場合は、FoodLuck MEO側で変更し、登録ボタンまで押したうえで反映を確認してください。</th></tr></table></div>
+<h2 id="3-hp連携を使う">3. HP連携を使う</h2>
+<p>HP連携は、FoodLuck MEOで管理している店舗情報をHPにも表示するための機能です。多店舗で営業時間変更がある場合、GoogleとHPを別々に直す手間を減らせます。</p>
+<ol>
+<li>HPの店舗情報、営業時間、住所などが掲載されているページを確認する。</li>
+<li>HTMLファイルを編集する前に、必ずバックアップを取る。</li>
+<li>FoodLuck MEOで、個店またはグループのHP連携タグを発行する。</li>
+<li>JavaScriptまたはPHPを選び、コピーする。</li>
+<li>HPのソースコード内、基本タグは&lt;/body&gt;の前に設置する。</li>
+<li>営業時間を連携する場合は、曜日ごとの営業時間タグをHP内の該当箇所に設置する。</li>
+<li>設置後、HP上で表示が崩れていないか、店舗情報が正しく出ているか確認する。</li>
+</ol>
+<p><strong>FAQ画像: 個店のHP連携タグ設置イメージ</strong></p>
+<p><figure><img src="../assets/manual-images/13-webサイト最適化機能-106779e078.png" alt="WEBサイト最適化機能の画面説明"></figure></p>
+<ul>
+<li>自店舗HP用のソースコードを、HP内の指定箇所へ設置します。</li>
+<li>開始と終わりの記号やタグは削除しないようにします。</li>
+</ul>
+<p><strong>FAQ画像: グループのHP連携タグ設置画面</strong></p>
+<p><figure><img src="../assets/manual-images/13-webサイト最適化機能-c8b1cd0241.png" alt="WEBサイト最適化機能の画面説明"></figure></p>
+<ul>
+<li>グループ画面では、複数店舗をまとめてHP連携するためのタグを発行します。</li>
+<li>グループの一括変更で反映する情報と、店舗個別で反映する情報を分けて考えます。</li>
+</ul>
+<div class="table-wrap"><table><tr><th>情報変更時の注意 タグ設置後に営業時間や住所などを変える場合は、HPのソースコードではなくFoodLuck MEO側で変更します。変更後は必ず登録ボタンを押してください。</th></tr></table></div>
+<p><strong>FAQ画像: フリー複数行入力</strong></p>
+<p><figure><img src="../assets/manual-images/13-webサイト最適化機能-a25cd4ddd6.png" alt="WEBサイト最適化機能の画面説明"></figure></p>
+<ul>
+<li>HPだけに表示したい補足文を入れる場合に使います。</li>
+<li>Googleビジネスプロフィールとは連動せず、HPにタグを設置した箇所のみに反映されます。</li>
+</ul>
+<h2 id="4-グループ連携と店舗別ページの注意">4. グループ連携と店舗別ページの注意</h2>
+<p>多店舗でHP連携を使う場合、グループ一括で表示するのか、店舗ごとのページにそれぞれ表示するのかで、設置するタグと更新方法が変わります。</p>
+<div class="table-wrap"><table><tr><th>ケース</th><th>考え方</th><th>注意点</th></tr><tr><td>全店舗一覧ページにまとめて出す</td><td>グループ用タグを設置する</td><td>グループ管理ページからの変更がHPに反映される</td></tr><tr><td>店舗ごとのページに別々に出す</td><td>各店舗ごとのタグを該当店舗ページへ設置する</td><td>A店ページにB店タグを貼らない</td></tr><tr><td>一部店舗だけ営業時間を変える</td><td>店舗個別のタグ設置や店舗個別編集が必要</td><td>グループ一括タグだけでは一部店舗変更に対応しにくい</td></tr><tr><td>グループを削除・作り直す</td><td>新しいタグが生成される</td><td>HP側のタグ再設置が必要。古いタグは空白やエラーの原因になる</td></tr><tr><td>グループ店舗の内訳だけ変更する</td><td>タグの状態により更新が続く場合がある</td><td>削除・解除前にFoodLuck側へ確認する</td></tr></table></div>
+<p><strong>FAQ画像: 特定店舗だけ変更がある場合</strong></p>
+<p><figure><img src="../assets/manual-images/13-webサイト最適化機能-c640cc15b8.png" alt="WEBサイト最適化機能の画面説明"></figure></p>
+<ul>
+<li>店舗ごとのページに情報がある場合は、各店舗のタグをそれぞれ設置します。</li>
+<li>貼り付ける店舗名とHPページが一致しているか確認します。</li>
+</ul>
+<div class="table-wrap"><table><tr><th>削除・解除は慎重に HP連携後にグループ化を解除・削除して作り直すと、新しいタグが生成され、HP側の再設置が必要になります。頻繁なURL変更や構造変更はSEO上も不利になる可能性があるため、削除前にFoodLuck側へ相談してください。</th></tr></table></div>
+<h2 id="5-hp投稿連携を使う">5. HP投稿連携を使う</h2>
+<p>HP投稿連携は、Googleビジネスプロフィールに投稿した最新情報やイベント情報を、店舗HPにも表示する機能です。Google投稿をHPにも見せたいときに使います。</p>
+<ol>
+<li>左メニューで「Googleデータ連携」&gt;「Googleビジネスプロフィール」&gt;「HP投稿連携」を開く。</li>
+<li>投稿対象で、直近2週間、直近1ヶ月、直近2ヶ月など表示期間を選ぶ。</li>
+<li>レイアウトをカード形式またはバーティカル形式から選ぶ。</li>
+<li>列数・行数を選ぶ。投稿数が少ない場合、スペースに空きが出ることがある。</li>
+<li>必要に応じてタイトル指定、色、フォントサイズを設定する。</li>
+<li>デザインイメージを確認し、問題なければ「発行する」を押す。</li>
+<li>発行されたタグを、HPの表示したい場所のソースコードへ設置する。</li>
+</ol>
+<p><strong>FAQ画像: HP投稿連携の設定画面</strong></p>
+<p><figure><img src="../assets/manual-images/13-webサイト最適化機能-eab8e0491e.png" alt="WEBサイト最適化機能の画面説明"></figure></p>
+<ul>
+<li>投稿対象、レイアウト、列数・行数、色、フォントサイズを設定します。</li>
+<li>投稿数が表示枠より少ない場合は空きが出るため、店舗の投稿頻度に合わせて設定します。</li>
+</ul>
+<div class="table-wrap"><table><tr><th>反映タイミング HP投稿連携は1日1回、深夜1時頃にバッチ処理が行われます。たとえば1日に投稿した内容は、2日の深夜処理後に反映される想定です。すぐ反映されない場合があります。</th></tr></table></div>
+<h2 id="6-hp-faq管理を使う">6. HP FAQ管理を使う</h2>
+<p>HP FAQ管理では、ホームページに表示するFAQをFoodLuck MEO側で一元管理できます。飲食店では、予約、支払い、席、子連れ、駐車場、アレルギー対応など、お客様からよく聞かれる質問を整えると問い合わせ削減につながります。</p>
+<ol>
+<li>「Googleデータ連携」&gt;「Googleビジネスプロフィール」&gt;「HP FAQ管理」を開く。</li>
+<li>質問と回答を入力する。</li>
+<li>必要に応じて質問を追加する。</li>
+<li>表示順をドラッグで調整する。</li>
+<li>入力が終わったら「登録する」を押す。</li>
+<li>「デザイン・タグ発行」タブでデザインを選ぶ。</li>
+<li>テキストカラーやフォントサイズを調整し、「発行する」を押してタグを発行する。</li>
+<li>発行されたタグをHPへ設置する。</li>
+</ol>
+<p><strong>FAQ画像: HP FAQ管理画面</strong></p>
+<p><figure><img src="../assets/manual-images/13-webサイト最適化機能-61262a0e96.png" alt="WEBサイト最適化機能の画面説明"></figure></p>
+<ul>
+<li>質問は最大100文字、回答は最大300文字まで入力できます。</li>
+<li>表示順を変えたい場合はドラッグで並び替えます。</li>
+<li>登録後、デザイン・タグ発行でHP表示用のタグを発行します。</li>
+</ul>
+<div class="table-wrap"><table><tr><th>飲食店向けFAQ例 『予約は必要ですか』『個室はありますか』『子ども連れでも利用できますか』『アレルギー対応はできますか』『駐車場はありますか』など、来店前の不安を減らす質問を優先します。</th></tr></table></div>
+<h2 id="7-構造化データを作成する">7. 構造化データを作成する</h2>
+<p>構造化データは、検索エンジンがHP内の店舗情報を理解しやすくするためのコードです。お客様に直接見える文章ではありませんが、HPの情報を検索エンジンへ伝える補助として使います。</p>
+<ol>
+<li>左メニューで「Googleデータ連携」&gt;「Googleビジネスプロフィール」&gt;「構造化データ作成」を開く。</li>
+<li>該当する業種を選ぶ。飲食店の場合は飲食店を選択する。</li>
+<li>入力フォームの内容を確認する。</li>
+<li>個店の場合はページ下部の「登録する」を押してコードを生成する。</li>
+<li>グループの場合は対象店舗を選び、コード生成方法を選んで登録する。</li>
+<li>生成されたコードを、店舗Webサイトの基本情報掲載ページのHTML headタグ内に貼り付ける。</li>
+</ol>
+<p><strong>FAQ画像: 構造化データ作成画面</strong></p>
+<p><figure><img src="../assets/manual-images/13-webサイト最適化機能-4c318b6ec2.png" alt="WEBサイト最適化機能の画面説明"></figure></p>
+<ul>
+<li>業種、対象店舗、生成方法を選んで構造化データを作成します。</li>
+<li>生成したコードはHPのhead内へ設置します。店舗側で直接編集せず、FoodLuck側またはHP制作会社に依頼してください。</li>
+</ul>
+<div class="table-wrap"><table><tr><th>グループ作成時の注意 グループで作成する場合、業種や生成方法は店舗ごとに個別設定できません。すでに個店で方法2を使って構造化データを設定している場合、グループでも方法2を使うと上書きされる場合があります。</th></tr></table></div>
+<h2 id="8-クチコミ評価要約をhpに表示する">8. クチコミ評価要約をHPに表示する</h2>
+<p>クチコミ評価要約は、Googleビジネスプロフィールに投稿されたクチコミを要約し、ホームページへ表示する機能です。第三者の声をHPに出せる一方で、良いクチコミだけを選んで表示する機能ではありません。</p>
+<ol>
+<li>評価したい項目を最大5項目まで入力する。項目を入れない場合は総合評価のみ表示される。</li>
+<li>対象クチコミの取得方法を、期間選択または件数選択から選ぶ。</li>
+<li>期間選択は6ヶ月から3年、件数選択は最新50件から200件まで50件刻みで選ぶ。</li>
+<li>「クチコミを要約する」を押し、右側の表示サンプルを確認する。</li>
+<li>タイトル、説明文、背景色、フォントサイズなどのデザインを調整する。</li>
+<li>問題なければ「発行する」を押す。</li>
+<li>発行されたスクリプトタグをHPのbodyタグ内に設置する。</li>
+<li>必要に応じて、自動更新をONにする。</li>
+</ol>
+<p><strong>FAQ画像: 評価項目の入力</strong></p>
+<p><figure><img src="../assets/manual-images/13-webサイト最適化機能-053b68d683.png" alt="WEBサイト最適化機能の画面説明"></figure></p>
+<ul>
+<li>価格、スタッフの態度、カフェの評価など、評価したい項目を設定できます。</li>
+<li>飲食店では料理、接客、雰囲気、価格、提供スピードなどが候補になります。</li>
+</ul>
+<p><strong>FAQ画像: クチコミ評価要約のデザイン設定</strong></p>
+<p><figure><img src="../assets/manual-images/13-webサイト最適化機能-00392bb9f5.png" alt="WEBサイト最適化機能の画面説明"></figure></p>
+<ul>
+<li>要約文の見た目や表示内容を調整し、発行することでHP表示用タグが作成されます。</li>
+<li>『クチコミを要約する』だけでは反映されません。必ず発行する操作が必要です。</li>
+</ul>
+<div class="table-wrap"><table><tr><th>重要な注意 要約は月10回まで実行できます。発行せずにページ移動や更新をすると、要約回数だけ消費されて保存されません。また、悪いクチコミが多い場合は低い評価として要約されます。良い口コミだけを取得して要約することはできません。</th></tr></table></div>
+<div class="table-wrap"><table><tr><th>GTMについて クチコミ評価要約はGoogle Tag Managerで設置できない仕様です。HPのbodyタグ内に直接設置する必要があります。</th></tr></table></div>
+<h2 id="9-よくある困りごと">9. よくある困りごと</h2>
+<div class="table-wrap"><table><tr><th>困りごと</th><th>確認すること</th><th>対応</th></tr><tr><td>HPに情報が反映されない</td><td>タグが消えていないか、設置場所が合っているか</td><td>FoodLuck側またはHP制作会社へ確認する</td></tr><tr><td>営業時間を一部店舗だけ変えたい</td><td>グループ一括タグか、店舗別タグか</td><td>店舗ごとにタグ設置や個別編集が必要な場合がある</td></tr><tr><td>グループを削除したらHPが空白/エラーになった</td><td>HP側に古いタグが残っていないか</td><td>古いタグを削除し、新しいタグを設置する</td></tr><tr><td>HP投稿がすぐ出ない</td><td>深夜1時頃のバッチ処理前かどうか</td><td>翌日以降に反映確認する</td></tr><tr><td>FAQがHPに出ない</td><td>登録済みか、デザイン・タグ発行済みか</td><td>登録とタグ設置の両方を確認する</td></tr><tr><td>クチコミ要約が保存されない</td><td>発行するボタンを押したか</td><td>要約後に必ず発行する</td></tr><tr><td>構造化データが不安</td><td>head内に正しく設置したか</td><td>制作会社へ設置確認を依頼する</td></tr></table></div>
+<h2 id="10-飲食店の月次チェックリスト">10. 飲食店の月次チェックリスト</h2>
+<p><strong>□ </strong>HP上の営業時間、住所、電話番号がFoodLuck MEOの情報と一致しているか確認した。</p>
+<p><strong>□ </strong>Google投稿を行った内容が、翌日以降HPにも表示されているか確認した。</p>
+<p><strong>□ </strong>HPのFAQに、現在の予約・支払い・席・駐車場ルールが反映されているか見直した。</p>
+<p><strong>□ </strong>クチコミ評価要約の内容が店舗の実態とかけ離れていないか確認した。</p>
+<p><strong>□ </strong>HP表示がおかしい場合、店舗側でHTMLを触らずFoodLuck側へ共有した。</p>
+<p><strong>□ </strong>グループや店舗構成を変える前に、HP連携タグへの影響を確認した。</p>
+<div class="table-wrap"><table><tr><th>運用の考え方 WEBサイト最適化機能は、店舗のHPを『更新されない古いページ』にしないための仕組みです。GoogleとHPで営業時間や投稿内容がズレるとお客様の不信感につながるため、月1回だけでも表示確認をしてください。</th></tr></table></div>
+<h2 id="11-この資料に反映したfaq記事">11. この資料に反映したFAQ記事</h2>
+<p>WEBサイト最適化機能カテゴリ配下のFAQ記事を、HP連携、グループ運用、HP投稿連携、HP FAQ、構造化データ、クチコミ評価要約に分けて反映しています。</p>
+<div class="table-wrap"><table><tr><th>No.</th><th>FAQ記事</th><th>反映先</th></tr><tr><td>1</td><td>HP連携後、グループ化している一部の店舗でHP上の営業時間を変更したいのですが、MEOdashboard上で変更は可能でしょうか</td><td>4. グループ注意</td></tr><tr><td>2</td><td>HP FAQ管理機能</td><td>6. HP FAQ</td></tr><tr><td>3</td><td>HP投稿連携について</td><td>5. HP投稿連携</td></tr><tr><td>4</td><td>HP連携後、グループピングしたグループそのものを削除した場合</td><td>4. グループ注意</td></tr><tr><td>5</td><td>HP連携後にグループ化を解除/削除するデメリット</td><td>4. グループ注意</td></tr><tr><td>6</td><td>HP連携後に情報変更を行う方法</td><td>3. 変更時注意</td></tr><tr><td>7</td><td>HP連携機能について</td><td>1・3. HP連携</td></tr><tr><td>8</td><td>HP連携機能の、「フリー複数行入力」の活用方法</td><td>3. HP連携</td></tr><tr><td>9</td><td>【グループ】HP連携する際のタグ設置場所について</td><td>4. グループ注意</td></tr><tr><td>10</td><td>【グループ】HP連携をしていて特定の店舗のみ変更することがある場合について</td><td>4. グループ注意</td></tr><tr><td>11</td><td>【グループ】HP連携機能を利用してグルーピングのタグをHPに設置したら、 各店舗ごとの情報修正は可能かどうかについて</td><td>4. グループ注意</td></tr><tr><td>12</td><td>【グループ】構造化データ作成について</td><td>4. グループ注意</td></tr><tr><td>13</td><td>【個店】HP連携する際のタグ設置場所について</td><td>本文各章</td></tr><tr><td>14</td><td>クチコミ評価要約の設定方法</td><td>8. クチコミ評価要約</td></tr><tr><td>15</td><td>クチコミ評価要約機能の概要</td><td>8. クチコミ評価要約</td></tr><tr><td>16</td><td>グループでHP連携のタグを生成した後に、グループの店舗の変更をした場合</td><td>4. グループ注意</td></tr><tr><td>17</td><td>グループ詳細にあるタグからHP連携設定を行った場合の情報の編集方法</td><td>4. グループ注意</td></tr><tr><td>18</td><td>店舗情報が各々のページに記載がある場合のHP連携方法</td><td>4. 店舗別ページ</td></tr><tr><td>19</td><td>構造化データ作成について</td><td>7. 構造化データ</td></tr></table></div>
+    </article>
+    <aside class="related-panel">
+      <p class="eyebrow">同じカテゴリ</p>
+      <nav><a href="01-基本操作.html">基本操作</a>
+<a href="02-初期設定.html">初期設定</a>
+<a href="03-その他.html">その他</a>
+<a href="04-店舗基本情報.html">店舗基本情報</a>
+<a href="05-写真管理.html">写真管理</a>
+<a href="06-投稿.html">投稿</a>
+<a href="07-クチコミ返信.html">クチコミ返信</a>
+<a href="08-クチコミ分析.html">クチコミ分析</a>
+<a href="09-インサイト.html">インサイト</a>
+<a href="10-順位.html">順位</a>
+<a href="11-クチコミ促進.html">クチコミ促進</a>
+<a href="12-クーポン管理.html">クーポン管理</a>
+<a href="14-店舗ページ限定機能.html">店舗ページ限定機能</a>
+<a href="15-グループ管理.html">グループ管理</a>
+<a href="16-データダウンロード.html">データダウンロード</a>
+<a href="17-sns連携機能.html">SNS連携機能</a>
+<a href="18-各媒体連携機能.html">各媒体連携機能</a>
+<a href="19-googleについて.html">Googleについて</a></nav>
+    </aside>
+  </main>
+  <script src="../assets/manual.js"></script>
+</body>
+</html>

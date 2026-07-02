@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>データダウンロード | FoodLuck MEO操作説明書</title>
+  <link rel="stylesheet" href="../assets/site.css">
+</head>
+<body data-page="manual">
+  <header class="site-header">
+    <a class="brand" href="../index.html">
+      <img src="../assets/brand/logo_foodluckmeo_display.png" alt="FoodLuck MEO">
+      <span>操作説明書</span>
+    </a>
+    <a class="button" href="../index.html#search">検索へ戻る</a>
+  </header>
+  <main class="manual-layout">
+    <aside class="toc-panel">
+      <p class="eyebrow">機能別マニュアル</p>
+      <h1>データダウンロード</h1>
+      <p>FoodLuck MEO 操作説明書 16</p>
+      <div class="button-row"><a class="button secondary" href="../assets/pdfs/16_FoodLuck_MEO_データダウンロード_操作説明書.pdf" target="_blank" rel="noopener">PDFで見る</a></div>
+      <nav class="toc"><a href="#1-データダウンロードでできること">1. データダウンロードでできること</a>
+<a href="#2-どの画面からダウンロードするか">2. どの画面からダウンロードするか</a>
+<a href="#3-グループ画面でデータをダウンロードする">3. グループ画面でデータをダウンロードする</a>
+<a href="#4-複数店舗データを一括で出す">4. 複数店舗データを一括で出す</a>
+<a href="#5-ダウンロードした数字の読み方">5. ダウンロードした数字の読み方</a>
+<a href="#6-店舗別の3位以内率を出す">6. 店舗別の3位以内率を出す</a>
+<a href="#7-自動レポートとfoodluckへの相談">7. 自動レポートとFoodLuckへの相談</a>
+<a href="#8-月次データ確認チェックリスト">8. 月次データ確認チェックリスト</a>
+<a href="#9-この資料に反映したfaq記事">9. この資料に反映したFAQ記事</a></nav>
+    </aside>
+    <article class="manual-content" id="content">
+      <div class="manual-meta">
+        <span>機能別マニュアル</span>
+        <span>9 セクション</span>
+        <span>12 画像</span>
+      </div>
+      <p class="lead"><strong>FoodLuck MEO 操作説明書 16</strong></p>
+<p class="lead"><strong>データダウンロード</strong></p>
+<p class="lead">インサイト・順位データをCSVで出力し、月次レポートや店舗改善に使うための実務マニュアル</p>
+<div class="table-wrap"><table><tr><th>この資料の目的 データダウンロードは、FoodLuck MEOの画面で見ている数値をCSVとして出力し、月次報告や店舗別の比較に使うための機能です。この資料では、どの画面から何を出すか、出した数字をどう読むかまでまとめます。</th></tr></table></div>
+<div class="table-wrap"><table><tr><th>操作前の注意 CSVダウンロード自体は外部公開される操作ではありません。ただし、対象店舗・期間・ランキング条件を間違えると、会議資料や判断材料の数字がずれます。対象店舗、期間、ランキング指定、ファイル形式を確認してから出力してください。</th></tr></table></div>
+<h2 id="1-データダウンロードでできること">1. データダウンロードでできること</h2>
+<p>データダウンロードでは、順位データとインサイトデータをCSVで出力できます。店舗現場では毎日使う機能ではありませんが、月次確認や本部への報告、複数店舗の比較では重要です。</p>
+<div class="table-wrap"><table><tr><th>出力するデータ</th><th>分かること</th><th>主な使い方</th><th>注意点</th></tr><tr><td>キーワード別ランキングデータ</td><td>キーワードごとの順位</td><td>MEO対策キーワードの月次確認</td><td>ランキング指定の初期値に注意</td></tr><tr><td>インサイト CSV</td><td>閲覧、検索、電話、ルート、Webクリックなど</td><td>集客反応の確認、店舗別比較</td><td>Google側の反映遅れを考慮</td></tr><tr><td>パフォーマンスレポート CSV</td><td>選んだインサイト項目の一覧</td><td>会議資料、数値管理表の作成</td><td>項目選択漏れに注意</td></tr><tr><td>複数店舗データ</td><td>全権アカウントで見られる店舗の一括出力</td><td>多店舗管理、エリア比較</td><td>権限と対象店舗を確認</td></tr><tr><td>3位以内率の集計</td><td>順位が3位以内に入った割合</td><td>順位改善の成果確認</td><td>Excelでの加工が必要</td></tr></table></div>
+<h2 id="2-どの画面からダウンロードするか">2. どの画面からダウンロードするか</h2>
+<p>出力したい内容によって、開く画面が変わります。店舗が1つだけなら個店ページ、多店舗をまとめる場合はグループや複数店出力を使います。</p>
+<div class="table-wrap"><table><tr><th>やりたいこと</th><th>開く画面</th><th>使う人</th></tr><tr><td>キーワード順位を出す</td><td>順位レポート &gt; データダウンロード</td><td>店舗担当者、本部担当者</td></tr><tr><td>インサイトを出す</td><td>Googleデータ連携 &gt; Googleインサイト &gt; データダウンロード</td><td>店舗担当者、本部担当者</td></tr><tr><td>グループ単位で出す</td><td>グループ画面のデータダウンロード</td><td>複数店舗管理者</td></tr><tr><td>閲覧・編集できる全店舗を出す</td><td>個店ページから出力範囲を「複数店」にする</td><td>全権アカウント以上</td></tr><tr><td>指定店舗だけまとめて出す</td><td>グループ機能で対象店舗をまとめてから出力</td><td>本部担当者、FoodLuck側</td></tr></table></div>
+<div class="table-wrap"><table><tr><th>権限の目安 個店ページから複数店舗データを一括で出す場合は、FAQ上では「全権アカウント」以上でログインする必要があると案内されています。表示されない場合は権限不足の可能性があるため、FoodLuck側へ確認してください。</th></tr></table></div>
+<h2 id="3-グループ画面でデータをダウンロードする">3. グループ画面でデータをダウンロードする</h2>
+<p>グループ画面では、グループにまとめた店舗を対象に、キーワード別ランキングデータとインサイトCSVを出力できます。エリア別やブランド別に数字を見たい時に使います。</p>
+<h3 id="3-1-キーワード別ランキングデータ">3-1. キーワード別ランキングデータ</h3>
+<p><strong>1. </strong>左側ナビゲーションから「Googleインサイト」&gt;「データダウンロード」を開く。</p>
+<p><strong>2. </strong>「キーワード別ランキングデータ」で、期間を選ぶ。</p>
+<p><strong>3. </strong>ランキング、対象媒体、フォルダ（グループ）、出力ファイル形式を指定する。</p>
+<p><strong>4. </strong>「CSVダウンロード」を押す。</p>
+<p><strong>5. </strong>ステータス画面へ移動し、出力完了後のCSVをダウンロードする。</p>
+<p><strong>FAQ画像: キーワード別ランキングデータの出力条件</strong></p>
+<p><figure><img src="../assets/manual-images/16-データダウンロード-2e300d68b8.png" alt="データダウンロードの画面説明"></figure></p>
+<p><strong>・</strong>期間、ランキング、媒体、フォルダ（グループ）、ファイル形式を指定します。</p>
+<p><strong>・</strong>月次確認では、対象期間が先月1日から末日になっているか確認します。</p>
+<h3 id="3-2-インサイト・パフォーマンスレポート-csv">3-2. インサイト・パフォーマンスレポート CSV</h3>
+<p><strong>1. </strong>左側ナビゲーションから「Googleインサイト」&gt;「データダウンロード」を開く。</p>
+<p><strong>2. </strong>データ表示形式、期間、対象媒体、対象店舗、フォルダ（グループ）、出力ファイル形式を指定する。</p>
+<p><strong>3. </strong>出したいインサイト項目にチェックを入れる。</p>
+<p><strong>4. </strong>「CSVダウンロード」を押す。</p>
+<p><strong>5. </strong>ステータス画面で出力完了後のCSVをダウンロードする。</p>
+<p><strong>FAQ画像: パフォーマンスレポート CSVの項目選択</strong></p>
+<p><figure><img src="../assets/manual-images/16-データダウンロード-15bc65ae36.png" alt="データダウンロードの画面説明"></figure></p>
+<p><strong>・</strong>電話、ルート、Webクリック、閲覧など、必要な項目を選びます。</p>
+<p><strong>・</strong>会議用に使う時は、毎月同じ項目で出すと比較しやすくなります。</p>
+<h2 id="4-複数店舗データを一括で出す">4. 複数店舗データを一括で出す</h2>
+<p>複数店舗を管理している場合は、出力範囲を「複数店」にすることで、閲覧・編集できる店舗データをまとめて出力できます。</p>
+<p><strong>1. </strong>全権アカウント以上でログインする。</p>
+<p><strong>2. </strong>順位データは「順位レポート」&gt;「データダウンロード」を開く。</p>
+<p><strong>3. </strong>インサイトデータは「Googleデータ連携」&gt;「Googleインサイト」&gt;「データダウンロード」を開く。</p>
+<p><strong>4. </strong>出力範囲を「複数店」にする。</p>
+<p><strong>5. </strong>期間、媒体、ランキングなど必要条件を指定し、CSVをダウンロードする。</p>
+<p><strong>FAQ画像: 個店ページから複数店舗データを出す入口</strong></p>
+<p><figure><img src="../assets/manual-images/16-データダウンロード-178a178ba1.png" alt="データダウンロードの画面説明"></figure></p>
+<p><strong>・</strong>左側メニューからデータダウンロード画面を開きます。</p>
+<p><strong>・</strong>複数店舗の一括出力は権限が必要です。</p>
+<p><strong>FAQ画像: 出力範囲を複数店にする</strong></p>
+<p><figure><img src="../assets/manual-images/16-データダウンロード-684966794f.png" alt="データダウンロードの画面説明"></figure></p>
+<p><strong>・</strong>出力範囲を「複数店」にすると、閲覧・編集できる店舗のデータをまとめて出せます。</p>
+<p><strong>・</strong>全店舗ではなく指定店舗だけにしたい場合は、グループ機能を使います。</p>
+<div class="table-wrap"><table><tr><th>業種別データとは 出力範囲を複数店にすると、「店舗基本情報」に登録されている業種ごとにまとめたデータを出せます。例えば複数業態を運営している場合、居酒屋、カフェ、テイクアウト店など業態別に反応を見たい時に便利です。</th></tr></table></div>
+<p><strong>FAQ画像: 複数店出力時の業種別</strong></p>
+<p><figure><img src="../assets/manual-images/16-データダウンロード-8693230131.png" alt="データダウンロードの画面説明"></figure></p>
+<p><strong>・</strong>業種別は、店舗基本情報の業種をもとに集計されます。</p>
+<p><strong>・</strong>業種の登録がずれていると集計もずれるため、店舗基本情報の確認が大切です。</p>
+<h2 id="5-ダウンロードした数字の読み方">5. ダウンロードした数字の読み方</h2>
+<h3 id="5-1-平均値の考え方">5-1. 平均値の考え方</h3>
+<p>FAQでは、平均値は「対象インサイト情報の合計」÷「指定期間の日数」で算出されると案内されています。指定期間が当日までの場合は、直近5日を除いて算出されます。</p>
+<div class="table-wrap"><table><tr><th>例</th><th>計算</th><th>読み方</th></tr><tr><td>全体閲覧ユーザー数 621</td><td>621 ÷ 27日 = 23</td><td>1日平均で約23人が見た、という目安</td></tr><tr><td>指定期間 2025/12/20-2026/1/20</td><td>32日 - 直近5日 = 27日</td><td>当日まで指定すると直近5日を除く</td></tr></table></div>
+<h3 id="5-2-表示の意味">5-2. 「-」表示の意味</h3>
+<p>順位チャートのダウンロードデータで「-」が出る場合は、検索時に60位まで確認しても順位が確認できなかったため、ランク外として扱われている状態です。</p>
+<div class="table-wrap"><table><tr><th>確認が必要なケース 同じ日付の順位チャートではランク外ではないのに、ダウンロードデータだけ「-」になっている場合は、FoodLuck側へ確認してください。</th></tr></table></div>
+<h3 id="5-3-キーワードが全部出ない時">5-3. キーワードが全部出ない時</h3>
+<p>キーワード別ランキングデータで登録キーワードを選んでいるのにすべて出ない時は、ランキング指定が初期値の「3位以内」になっている可能性があります。ランキング指定を「指定なし」にして再度出力します。</p>
+<p><strong>FAQ画像: ランキング指定を確認する</strong></p>
+<p><figure><img src="../assets/manual-images/16-データダウンロード-1705243cd5.png" alt="データダウンロードの画面説明"></figure></p>
+<p><strong>・</strong>初期値が3位以内になっている場合、対象外のキーワードが出ないことがあります。</p>
+<p><strong>・</strong>すべて確認したい時は「指定なし」を選びます。</p>
+<h2 id="6-店舗別の3位以内率を出す">6. 店舗別の3位以内率を出す</h2>
+<p>3位以内率は、登録キーワードが指定期間中どれくらい3位以内に入ったかを見る指標です。FoodLuck MEOからCSVを出した後、Excelで加工して算出します。月次報告や改善成果の確認に向いています。</p>
+<p><strong>1. </strong>「順位レポート」&gt;「データダウンロード」で、キーワード別ランキングデータをダウンロードする。</p>
+<p><strong>2. </strong>期間を絞り込み、ランキング指定は「指定なし」にする。</p>
+<p><strong>3. </strong>CSVをExcelで開く。</p>
+<p><strong>4. </strong>「データの個数」を COUNTA 関数で作る。</p>
+<p><strong>5. </strong>「3位以内の個数」を COUNTIF 関数で作る。</p>
+<p><strong>6. </strong>ピボットテーブルを作成する。</p>
+<p><strong>7. </strong>集計フィールドで「3位以内の個数 / データの個数」を作る。</p>
+<p><strong>8. </strong>行に店舗名やキーワード、値にデータの個数・3位以内の個数・割合を入れる。</p>
+<p><strong>9. </strong>割合をパーセント表示に整える。</p>
+<p><strong>FAQ画像: ランキング指定なしでCSVを出す</strong></p>
+<p><figure><img src="../assets/manual-images/16-データダウンロード-3f0fb55888.png" alt="データダウンロードの画面説明"></figure></p>
+<p><strong>・</strong>3位以内率を自分で算出する場合は、ランキング指定を「指定なし」にします。</p>
+<p><strong>・</strong>最初から3位以内だけで出すと、分母がずれてしまいます。</p>
+<div class="table-wrap"><table><tr><th>作る列</th><th>Excel関数</th><th>意味</th></tr><tr><td>データの個数</td><td>=COUNTA(範囲)</td><td>順位データが何日分あるかを見る</td></tr><tr><td>3位以内の個数</td><td>=COUNTIF(範囲,&quot;&lt;=3&quot;)</td><td>3位以内になった日数を数える</td></tr><tr><td>割合</td><td>3位以内の個数 / データの個数</td><td>期間中に3位以内だった割合</td></tr></table></div>
+<p><strong>FAQ画像: COUNTAでデータ数を数える</strong></p>
+<p><figure><img src="../assets/manual-images/16-データダウンロード-09f9169010.png" alt="データダウンロードの画面説明"></figure></p>
+<p><strong>・</strong>データの個数は、日数や順位データの数を確認するために使います。</p>
+<p><strong>・</strong>範囲指定を間違えると全体の割合が変わるため注意します。</p>
+<p><strong>FAQ画像: COUNTIFで3位以内を数える</strong></p>
+<p><figure><img src="../assets/manual-images/16-データダウンロード-befd5e35a5.png" alt="データダウンロードの画面説明"></figure></p>
+<p><strong>・</strong>条件は「&lt;=3」と入力します。</p>
+<p><strong>・</strong>FAQでも、ダブルクォーテーションを忘れやすい点に注意と案内されています。</p>
+<p><strong>FAQ画像: ピボットテーブルを作成する</strong></p>
+<p><figure><img src="../assets/manual-images/16-データダウンロード-d01878087c.png" alt="データダウンロードの画面説明"></figure></p>
+<p><strong>・</strong>Excelの「挿入」からピボットテーブルを作成します。</p>
+<p><strong>・</strong>店舗別、キーワード別など、見たい単位で集計できます。</p>
+<p><strong>FAQ画像: 集計フィールドで割合を作る</strong></p>
+<p><figure><img src="../assets/manual-images/16-データダウンロード-ae0d6f11b4.png" alt="データダウンロードの画面説明"></figure></p>
+<p><strong>・</strong>数式には「3位以内の個数 / データの個数」を入れます。</p>
+<p><strong>・</strong>割り算の記号「/」を入れ忘れないようにします。</p>
+<p><strong>FAQ画像: 3位以内率をパーセント表示に整える</strong></p>
+<p><figure><img src="../assets/manual-images/16-データダウンロード-ee178d0f38.png" alt="データダウンロードの画面説明"></figure></p>
+<p><strong>・</strong>最後に表示形式をパーセントにすると、会議資料で見やすくなります。</p>
+<p><strong>・</strong>店舗別に見る時は、順位だけでなく投稿・写真・クチコミの運用状況も一緒に確認します。</p>
+<h2 id="7-自動レポートとfoodluckへの相談">7. 自動レポートとFoodLuckへの相談</h2>
+<p>データダウンロード以外にも、毎月5日に自動で送付されるPDFレポート機能があります。必要な場合は販売店側で対応する案内になっているため、FoodLuckへご相談ください。</p>
+<p><strong>・</strong>契約内容によって、レポート送付ができない場合があります。</p>
+<p><strong>・</strong>店舗側でCSV加工が難しい場合は、FoodLuck側でレポート化できるか相談してください。</p>
+<p><strong>・</strong>毎月同じ条件で出力すると、前月比較や改善確認がしやすくなります。</p>
+<h2 id="8-月次データ確認チェックリスト">8. 月次データ確認チェックリスト</h2>
+<p><strong>□ </strong>対象期間が正しい（例: 先月1日から末日）</p>
+<p><strong>□ </strong>対象店舗・グループが正しい</p>
+<p><strong>□ </strong>キーワード別ランキングデータは、必要に応じてランキング指定を「指定なし」にしている</p>
+<p><strong>□ </strong>インサイト項目のチェック漏れがない</p>
+<p><strong>□ </strong>複数店出力の場合、権限と出力範囲を確認した</p>
+<p><strong>□ </strong>平均値を見る時は、当日まで指定した場合の直近5日除外を理解している</p>
+<p><strong>□ </strong>「-」表示はランク外として扱い、画面表示と矛盾する時はFoodLuckへ確認する</p>
+<p><strong>□ </strong>3位以内率を出す時は、分母と分子の範囲が同じになっている</p>
+<p><strong>□ </strong>CSVを会議資料に使う前に、店舗名、期間、媒体、集計条件を確認した</p>
+<div class="table-wrap"><table><tr><th>現場に伝える時のポイント 数字は、現場を責めるためではなく、次の一手を決めるために使います。順位が落ちた時は、写真、投稿、クチコミ返信、店舗情報の更新状況も一緒に確認すると、改善すべき場所が見えやすくなります。</th></tr></table></div>
+<h2 id="9-この資料に反映したfaq記事">9. この資料に反映したFAQ記事</h2>
+<div class="table-wrap"><table><tr><th>No.</th><th>FAQ記事</th><th>本文での反映先</th></tr><tr><td>1</td><td>ダウンロードしたデータの平均値について</td><td>5. 数字の読み方</td></tr><tr><td>2</td><td>【グループ】データのダウンロード方法</td><td>3. グループ画面でダウンロード</td></tr><tr><td>3</td><td>店舗別の3位以内率を抽出する方法（自分で算出する方法）</td><td>6. 3位以内率</td></tr><tr><td>4</td><td>データダウンロード以外のレポート機能</td><td>7. 自動レポート</td></tr><tr><td>5</td><td>Googleインサイトデータのダウンロード時に、「出力範囲」を複数店に設定した場合、「データ種別」に表示される、「業種別」とは</td><td>4. 複数店舗・業種別</td></tr><tr><td>6</td><td>個店ページから複数店舗データを一括ダウンロードする方法</td><td>4. 複数店舗データ</td></tr><tr><td>7</td><td>ダウンロードしたデータの「-」表示について</td><td>5. 「-」表示</td></tr><tr><td>8</td><td>データダウンロードの「キーワード別ランキングデータ」の出力時、登録キーワードをすべてダウンロードできない場合</td><td>5. キーワードが出ない時</td></tr></table></div>
+    </article>
+    <aside class="related-panel">
+      <p class="eyebrow">同じカテゴリ</p>
+      <nav><a href="01-基本操作.html">基本操作</a>
+<a href="02-初期設定.html">初期設定</a>
+<a href="03-その他.html">その他</a>
+<a href="04-店舗基本情報.html">店舗基本情報</a>
+<a href="05-写真管理.html">写真管理</a>
+<a href="06-投稿.html">投稿</a>
+<a href="07-クチコミ返信.html">クチコミ返信</a>
+<a href="08-クチコミ分析.html">クチコミ分析</a>
+<a href="09-インサイト.html">インサイト</a>
+<a href="10-順位.html">順位</a>
+<a href="11-クチコミ促進.html">クチコミ促進</a>
+<a href="12-クーポン管理.html">クーポン管理</a>
+<a href="13-webサイト最適化機能.html">WEBサイト最適化機能</a>
+<a href="14-店舗ページ限定機能.html">店舗ページ限定機能</a>
+<a href="15-グループ管理.html">グループ管理</a>
+<a href="17-sns連携機能.html">SNS連携機能</a>
+<a href="18-各媒体連携機能.html">各媒体連携機能</a>
+<a href="19-googleについて.html">Googleについて</a></nav>
+    </aside>
+  </main>
+  <script src="../assets/manual.js"></script>
+</body>
+</html>

@@ -1,923 +1,399 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FoodLuck MEO 初期設定ガイド ｜ 管理者の追加・ログイン情報のご共有</title>
-<link rel="stylesheet" href="assets/css/colors_and_type.css">
-<style>
-  :root { --doc-w: 880px; }
-
-  html, body { background: #EDEFF3; }
-
-  body {
-    margin: 0;
-    padding: 56px 24px 96px;
-    color: var(--fg);
-    font-family: var(--font-sans);
-    -webkit-print-color-adjust: exact;
-    print-color-adjust: exact;
-  }
-
-  .doc {
-    width: var(--doc-w);
-    max-width: 100%;
-    margin: 0 auto;
-    background: var(--bg);
-    border-radius: var(--radius);
-    box-shadow: 0 18px 50px rgba(29, 53, 87, 0.14);
-    overflow: hidden;
-  }
-
-  /* ============== COVER ============== */
-  .cover {
-    padding: 48px clamp(28px, 7%, 72px) 44px;
-    border-bottom: 1px solid var(--hairline);
-  }
-  .cover-top {
-    display: flex; align-items: center; justify-content: space-between;
-    gap: var(--s-5); margin-bottom: 52px;
-  }
-  .cover-top img { height: 30px; width: auto; display: block; }
-  .series {
-    display: inline-flex; align-items: baseline; gap: 8px;
-    font-size: 13px; letter-spacing: var(--tracking-wide);
-    color: var(--slate); font-weight: var(--weight-medium);
-  }
-  .series b {
-    font-family: var(--font-display); font-size: 17px;
-    color: var(--navy); font-weight: var(--weight-bold);
-  }
-  .eyebrow {
-    display: block; font-size: 12.5px; letter-spacing: 0.16em;
-    color: var(--slate); font-weight: var(--weight-medium); margin-bottom: 18px;
-  }
-  .cover-title {
-    font-family: var(--font-display); font-weight: var(--weight-bold);
-    color: var(--navy); font-size: clamp(28px, 4.6vw, 42px);
-    line-height: 1.3; letter-spacing: var(--tracking-tight); margin: 0;
-  }
-  .accent-rule {
-    display: block; width: 76px; height: 5px; margin: 28px 0 24px;
-    background: var(--navy); border-radius: 999px; position: relative;
-  }
-  .accent-rule::after {
-    content: ""; position: absolute; left: 0; top: 0;
-    width: 30px; height: 100%; background: var(--brand-yellow); border-radius: 999px;
-  }
-  .cover-lead {
-    font-size: 16.5px; line-height: var(--leading-normal);
-    color: var(--fg); max-width: 60ch; margin: 0;
-  }
-  .owner-note {
-    display: flex; align-items: flex-start; gap: 16px; margin-top: 34px;
-    padding: 18px 22px; background: var(--bg-soft);
-    border: 1px solid var(--hairline); border-radius: var(--radius);
-  }
-  .owner-note .tag {
-    flex: none; font-size: 12px; font-weight: var(--weight-bold);
-    letter-spacing: 0.08em; color: var(--fg-on-navy); background: var(--navy);
-    padding: 5px 12px; border-radius: 999px; line-height: 1.2; margin-top: 2px;
-  }
-  .owner-note p { margin: 0; font-size: 15px; line-height: 1.6; color: var(--fg); }
-  .owner-note strong { color: var(--navy); font-weight: var(--weight-bold); }
-
-  /* ============== SECTIONS ============== */
-  .body-wrap { padding: 8px clamp(28px, 7%, 72px) 0; }
-
-  .section { padding: 36px 0 8px; }
-  .section + .section { border-top: 1px solid var(--hairline); }
-
-  .section-head {
-    display: flex; align-items: baseline; gap: 16px; margin-bottom: 6px;
-  }
-  .section-no {
-    font-family: var(--font-display); font-weight: var(--weight-bold);
-    font-size: 22px; color: var(--navy);
-    border: 2px solid var(--navy); border-radius: 50%;
-    width: 44px; height: 44px; flex: none;
-    display: flex; align-items: center; justify-content: center;
-    align-self: center;
-  }
-  .section-title {
-    font-family: var(--font-display); font-weight: var(--weight-bold);
-    color: var(--navy); font-size: 24px; letter-spacing: var(--tracking-tight);
-    margin: 0; line-height: 1.3;
-  }
-  .section-desc {
-    font-size: 14.5px; line-height: var(--leading-normal);
-    color: var(--fg-muted); margin: 4px 0 24px 60px;
-  }
-  .section-desc strong { color: var(--navy); font-weight: var(--weight-bold); }
-
-  /* service card */
-  .svc {
-    border: 2px solid var(--navy);
-    border-radius: var(--radius);
-    padding: 22px 26px 24px;
-    margin-bottom: 18px;
-  }
-  .svc.optional { border-color: var(--slate-200); }
-
-  .svc-head {
-    display: flex; align-items: center; gap: 14px;
-    flex-wrap: wrap; margin-bottom: 4px;
-  }
-  .svc-name {
-    font-family: var(--font-display); font-weight: var(--weight-bold);
-    color: var(--navy); font-size: 21px; letter-spacing: var(--tracking-tight);
-    margin: 0; line-height: 1.2;
-  }
-  .svc.optional .svc-name { color: var(--fg); }
-
-  .badge {
-    font-size: 12px; font-weight: var(--weight-bold); letter-spacing: 0.06em;
-    padding: 5px 12px; border-radius: 999px; line-height: 1.2; white-space: nowrap;
-  }
-  .badge-req { background: var(--navy); color: var(--fg-on-navy); }
-  .badge-opt {
-    background: transparent; color: var(--slate);
-    border: 1.5px solid var(--slate-200);
-  }
-  .svc-sub {
-    font-size: 13px; color: var(--slate); margin: 0 0 18px;
-    line-height: 1.5;
-  }
-  .svc-sub--req { color: var(--navy); font-weight: var(--weight-medium); }
-
-  /* needed-info list */
-  .need-label {
-    display: block; font-size: 12px; letter-spacing: 0.04em;
-    color: var(--slate); font-weight: var(--weight-bold); margin-bottom: 12px;
-  }
-  .need-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 11px; }
-  .need-list > li {
-    position: relative; padding-left: 1.6em;
-    font-size: 15.5px; line-height: 1.5; color: var(--fg);
-  }
-  .need-list > li::before {
-    content: ""; position: absolute; left: 2px; top: 0.62em;
-    width: 8px; height: 8px; background: var(--navy);
-    border-radius: 2px; transform: translateY(-50%) rotate(45deg);
-  }
-  .svc.optional .need-list > li::before { background: var(--slate); }
-
-  .svc-foot {
-    display: flex; align-items: flex-start; gap: 9px;
-    margin: 16px 0 0; font-size: 12.5px; line-height: 1.6; color: var(--slate);
-  }
-  .svc-foot::before {
-    content: ""; flex: none; width: 7px; height: 7px; margin-top: 7px;
-    background: var(--brand-yellow); border: 1.5px solid var(--brand-yellow-700);
-    transform: rotate(45deg); border-radius: 1px;
-  }
-
-  /* ============== SHARE METHOD ============== */
-  .share {
-    margin: 16px clamp(28px, 7%, 72px) 0;
-    padding: 26px 28px; background: var(--bg-soft); border-radius: var(--radius);
-  }
-  .share-eyebrow {
-    display: block; font-size: 12px; letter-spacing: 0.14em;
-    color: var(--slate); font-weight: var(--weight-bold); margin-bottom: 12px;
-  }
-  .share p { margin: 0 0 12px; font-size: 14.5px; line-height: 1.7; color: var(--fg); }
-  .share p:last-child { margin-bottom: 0; }
-  .share strong { color: var(--navy); font-weight: var(--weight-bold); }
-  .send-box {
-    display: flex; align-items: flex-start; gap: 16px;
-    background: var(--navy); color: var(--fg-on-navy);
-    border-radius: var(--radius); padding: 20px 24px; margin-bottom: 16px;
-  }
-  .send-tag {
-    flex: none; font-size: 12px; font-weight: var(--weight-bold); letter-spacing: 0.08em;
-    color: var(--navy); background: var(--brand-yellow);
-    padding: 5px 12px; border-radius: 999px; margin-top: 2px;
-  }
-  .send-box p { margin: 0; font-size: 15.5px; line-height: 1.65; color: var(--fg-on-navy); }
-  .send-box strong { color: var(--brand-yellow); font-weight: var(--weight-bold); }
-
-  /* ============== FOOTER ============== */
-  .doc-footer {
-    display: flex; align-items: center; justify-content: space-between;
-    gap: var(--s-5); padding: 26px clamp(28px, 7%, 72px) 36px;
-    margin-top: 30px; border-top: 1px solid var(--hairline);
-  }
-  .doc-footer img { height: 22px; width: auto; opacity: 0.9; }
-  .doc-footer span { font-size: 12px; color: var(--slate); letter-spacing: 0.02em; }
-
-  /* ============== PRINT ============== */
-  @media print {
-    @page { size: A4; margin: 14mm; }
-    body { background: #fff; padding: 0; }
-    .doc { width: 100%; box-shadow: none; border-radius: 0; }
-    .svc, .section, .owner-note, .share { break-inside: avoid; }
-    .cover { break-after: avoid; }
-  }
-
-  @media (max-width: 560px) {
-    body { padding: 20px 0 40px; }
-    .doc { border-radius: 0; }
-    .fields { grid-template-columns: 1fr; }
-    .section-desc { margin-left: 0; }
-  }
-
-/* ============== STEPS ============== */
-  .steps {
-    padding: 12px clamp(28px, 7%, 72px) 8px;
-  }
-
-  .step {
-    display: grid;
-    grid-template-columns: 52px 1fr;
-    column-gap: 22px;
-    padding: 30px 0 34px;
-  }
-  .step + .step { border-top: 1px solid var(--hairline); }
-
-  .rail { position: relative; }
-  .rail::before {
-    content: "";
-    position: absolute;
-    left: 25px;
-    top: 8px;
-    bottom: -42px;
-    width: 2px;
-    background: var(--navy-100);
-    transform: translateX(-50%);
-  }
-  .step:last-child .rail::before { display: none; }
-
-  .step-num {
-    position: relative;
-    z-index: 1;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background: var(--navy);
-    color: var(--fg-on-navy);
-    font-family: var(--font-display);
-    font-weight: var(--weight-bold);
-    font-size: 22px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 4px 12px rgba(29, 53, 87, 0.22);
-  }
-
-  .step-title {
-    font-family: var(--font-display);
-    font-weight: var(--weight-bold);
-    color: var(--navy);
-    font-size: 21px;
-    line-height: 1.4;
-    letter-spacing: var(--tracking-tight);
-    margin: 9px 0 0;
-  }
-  .step-body {
-    font-size: 15px;
-    line-height: var(--leading-normal);
-    color: var(--fg-muted);
-    margin: 12px 0 0;
-    max-width: 56ch;
-  }
-  .step-body strong { color: var(--navy); font-weight: var(--weight-bold); }
-
-  /* screenshot card */
-  .shot {
-    margin: 20px 0 0;
-    border: 1px solid var(--hairline);
-    border-radius: var(--radius);
-    background: #fff;
-    box-shadow: var(--shadow-card);
-    overflow: hidden;
-    max-width: 660px;
-  }
-  .shot-bar {
-    display: flex;
-    align-items: center;
-    gap: 7px;
-    padding: 9px 14px;
-    background: #F4F6FA;
-    border-bottom: 1px solid var(--hairline);
-  }
-  .shot-bar i {
-    width: 9px; height: 9px; border-radius: 50%;
-    background: var(--slate-200);
-    display: block;
-  }
-  .shot-bar span {
-    margin-left: 8px;
-    font-size: 11.5px;
-    color: var(--slate);
-    letter-spacing: 0.02em;
-  }
-  .shot img { display: block; width: 100%; height: auto; }
-  .shot.narrow { max-width: 420px; }
-
-  .hint {
-    display: flex;
-    align-items: flex-start;
-    gap: 9px;
-    margin: 14px 0 0;
-    font-size: 13.5px;
-    line-height: 1.6;
-    color: var(--slate);
-  }
-  .hint::before {
-    content: "";
-    flex: none;
-    width: 8px; height: 8px;
-    margin-top: 7px;
-    background: var(--brand-yellow);
-    border: 1.5px solid var(--brand-yellow-700);
-    transform: rotate(45deg);
-    border-radius: 1px;
-  }
-  .hint b { color: var(--navy); font-weight: var(--weight-bold); }
-  .email-callout { margin: 18px 0 0; background: var(--navy-100); border: 1px solid var(--navy-100); border-radius: var(--radius); padding: 18px 22px; }
-  .email-callout-label { display: block; font-size: 12px; font-weight: var(--weight-bold); letter-spacing: 0.06em; color: var(--navy-500); margin-bottom: 7px; }
-  .email-callout-addr { display: block; font-size: 22px; font-weight: var(--weight-bold); color: var(--navy); word-break: break-all; }
-  .email-callout-note { margin: 12px 0 0; font-size: 12.5px; line-height: 1.6; color: var(--fg-muted); }
-  .email-callout-note strong { color: var(--navy); font-weight: var(--weight-bold); }
-  .cl-note strong { color: var(--navy); font-weight: var(--weight-bold); }
-
-  /* completion step */
-  .done-box {
-    margin: 18px 0 0;
-    background: var(--navy);
-    color: var(--fg-on-navy);
-    border-radius: var(--radius);
-    padding: 22px 26px;
-    display: flex;
-    align-items: center;
-    gap: 16px;
-  }
-  .done-box .check {
-    flex: none;
-    width: 34px; height: 34px;
-    border-radius: 50%;
-    border: 2px solid var(--brand-yellow);
-    display: flex; align-items: center; justify-content: center;
-  }
-  .done-box .check svg { width: 18px; height: 18px; }
-  .done-box p {
-    margin: 0;
-    font-size: 15.5px;
-    line-height: 1.55;
-  }
-  .done-box strong { color: var(--brand-yellow); font-weight: var(--weight-bold); }
-  .done-box small { display:block; margin-top: 6px; font-size: 12.5px; color: var(--slate-200); }
-
-  /* ============== REFERENCE ============== */
-  .reference {
-    margin: 8px clamp(28px, 7%, 72px) 0;
-    padding: 26px 28px;
-    background: var(--bg-soft);
-    border-radius: var(--radius);
-  }
-  .ref-eyebrow {
-    display: block;
-    font-size: 12px;
-    letter-spacing: 0.14em;
-    color: var(--slate);
-    font-weight: var(--weight-bold);
-    margin-bottom: 10px;
-  }
-  .reference p {
-    margin: 0 0 14px;
-    font-size: 14.5px;
-    line-height: 1.6;
-    color: var(--fg);
-  }
-  .ref-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 14.5px;
-    font-weight: var(--weight-medium);
-    color: var(--navy);
-    text-decoration: none;
-    border-bottom: 2px solid var(--navy-100);
-    padding-bottom: 3px;
-    transition: border-color .15s ease;
-  }
-  .ref-link:hover { border-color: var(--navy); }
-  .ref-link svg { width: 15px; height: 15px; flex: none; }
-
-  
-
-  /* ============== TOC ============== */
-  .toc { margin-top: 34px; border-top: 1px solid var(--hairline); }
-  .toc-item { display: flex; align-items: center; gap: 18px; padding: 17px 4px; border-bottom: 1px solid var(--hairline); text-decoration: none; color: var(--navy); }
-  .toc-no { font-family: var(--font-display); font-weight: var(--weight-bold); color: var(--navy); font-size: 18px; width: 30px; flex: none; }
-  .toc-text { font-size: 15.5px; font-weight: var(--weight-medium); line-height: 1.4; }
-  .toc-tag { margin-left: auto; font-size: 11.5px; color: var(--slate); white-space: nowrap; }
-  .toc-item:hover .toc-text { text-decoration: underline; }
-
-  /* ============== CHAPTER DIVIDER ============== */
-  .chapter-head {
-    background: var(--navy); color: var(--fg-on-navy);
-    padding: 40px clamp(28px, 7%, 72px) 38px;
-    display: flex; align-items: center; gap: 26px;
-  }
-  .chapter-no {
-    font-family: var(--font-display); font-weight: var(--weight-bold);
-    font-size: 52px; line-height: 1; color: var(--brand-yellow); flex: none;
-  }
-  .chapter-eyebrow { display: block; font-size: 11.5px; letter-spacing: 0.16em; color: var(--slate-200); margin-bottom: 9px; }
-  .chapter-title { font-family: var(--font-display); font-weight: var(--weight-bold); font-size: 27px; line-height: 1.3; margin: 0; color: var(--fg-on-navy); letter-spacing: var(--tracking-tight); }
-  .chapter-desc { font-size: 14px; line-height: 1.6; color: var(--slate-200); margin: 10px 0 0; }
-
-  /* ============== CHECKLIST ============== */
-  .checklist { margin: 32px clamp(28px, 7%, 72px) 0; padding: 32px 34px; border: 2px solid var(--navy); border-radius: var(--radius); }
-  .cl-eyebrow { display: block; font-size: 12px; letter-spacing: 0.16em; color: var(--slate); font-weight: var(--weight-bold); margin-bottom: 9px; }
-  .cl-title { font-family: var(--font-display); font-weight: var(--weight-bold); color: var(--navy); font-size: 26px; margin: 0; letter-spacing: var(--tracking-tight); }
-  .cl-lead { font-size: 14.5px; color: var(--fg-muted); margin: 11px 0 24px; line-height: 1.6; }
-  .cl-list { list-style: none; margin: 0 0 22px; padding: 0; }
-  .cl-list > li { display: flex; gap: 14px; align-items: flex-start; padding: 15px 0; border-top: 1px solid var(--hairline); }
-  .cl-list > li:first-child { border-top: none; }
-  .cl-box { flex: none; width: 22px; height: 22px; border: 2px solid var(--navy); border-radius: 5px; margin-top: 2px; }
-  .cl-list > li.opt .cl-box { border-color: var(--slate-200); }
-  .cl-item { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
-  .cl-name { font-size: 16px; font-weight: var(--weight-bold); color: var(--navy); }
-  .cl-list > li.opt .cl-name { color: var(--fg); }
-  .cl-note { flex-basis: 100%; font-size: 12.5px; color: var(--slate); line-height: 1.5; }
-
-  @media (max-width: 560px) {
-    .chapter-head { flex-direction: column; align-items: flex-start; gap: 12px; }
-    .chapter-no { font-size: 40px; }
-  }
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FoodLuck MEO操作説明書</title>
+  <link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
-  <main class="doc">
-
-    <!-- ===== GUIDE COVER ===== -->
-    <header class="cover">
-      <div class="cover-top">
-        <img src="assets/logo.png" alt="Food Luck">
-        <span class="series">SETUP GUIDE <b>MEO</b></span>
-      </div>
-      <span class="eyebrow">FOODLUCK MEO ／ 初期設定ガイド</span>
-      <h1 class="cover-title">FoodLuck MEO<br>初期設定のお願い</h1>
-      <span class="accent-rule"></span>
-      <p class="cover-lead">このページは、FoodLuck MEO の運用開始にあたり、お客さまにお願いする<strong>設定</strong>と<strong>ログイン情報のご共有</strong>を一つにまとめたものです。上から順にご対応いただき、最後の<strong>チェックリスト</strong>でご確認ください。</p>
-
-      <div class="owner-note">
-        <span class="tag">はじめに</span>
-        <p>ご契約状況によって対象外の項目（任意のSNS・グルメサイト等）がある場合は、対応不要です。ご不明な点は <strong>FoodLuck 担当・小島</strong> までお気軽にお知らせください。</p>
-      </div>
-
-      <nav class="toc">
-        <a class="toc-item" href="#ch1"><span class="toc-no">01</span><span class="toc-text">Googleビジネスプロフィールに管理者を追加</span><span class="toc-tag">必須</span></a>
-        <a class="toc-item" href="#ch2"><span class="toc-no">02</span><span class="toc-text">Facebookページに管理者を追加</span><span class="toc-tag">必須</span></a>
-        <a class="toc-item" href="#ch3"><span class="toc-no">03</span><span class="toc-text">各SNS・グルメサイトのログイン情報を共有</span><span class="toc-tag">必須＋任意</span></a>
-      </nav>
-    </header>
-
-    <!-- ===== CHAPTER 1 ===== -->
-    <div class="chapter-head" id="ch1">
-      <span class="chapter-no">01</span>
-      <div>
-        <span class="chapter-eyebrow">STEP 01 ／ GOOGLE BUSINESS PROFILE</span>
-        <h2 class="chapter-title">Googleビジネスプロフィールに管理者を追加</h2>
-        <p class="chapter-desc">FoodLuck を「管理者」として追加します。追加できるのはオーナーのみです。</p>
-      </div>
+  <header class="home-hero">
+    <div class="hero-copy">
+      <img class="hero-logo" src="assets/brand/logo_foodluckmeo_display.png" alt="FoodLuck MEO">
+      <h1>操作説明書</h1>
+      <p>機能別マニュアル、FAQ、運用資料をまとめて検索できます。</p>
     </div>
-
-    <section class="steps">
-
-      <!-- 1 -->
-      <article class="step">
-        <div class="rail"><div class="step-num">1</div></div>
-        <div class="content">
-          <h2 class="step-title">Google ビジネス プロフィールにログインします。</h2>
-          <p class="step-body">管理者権限をお持ちの<strong>オーナーアカウント</strong>でログインしてください。</p>
-        </div>
-      </article>
-
-      <!-- 2 -->
-      <article class="step">
-        <div class="rail"><div class="step-num">2</div></div>
-        <div class="content">
-          <h2 class="step-title">管理者権限を追加するビジネスを選択します。</h2>
-          <figure class="shot">
-            <div class="shot-bar"><i></i><i></i><i></i><span>お店やサービス</span></div>
-            <img src="assets/shots/01-business-list.png" alt="お店やサービスの一覧画面">
-          </figure>
-          <p class="hint">一覧から、管理者を追加したい<b>店舗（ビジネス）</b>をクリックします。</p>
-        </div>
-      </article>
-
-      <!-- 3 -->
-      <article class="step">
-        <div class="rail"><div class="step-num">3</div></div>
-        <div class="content">
-          <h2 class="step-title">右上の「⋮」を押し、「ビジネス プロフィールの設定」を選択します。</h2>
-          <figure class="shot">
-            <div class="shot-bar"><i></i><i></i><i></i><span>ビジネス プロフィール</span></div>
-            <img src="assets/shots/02-profile-menu.png" alt="メニューからビジネス プロフィールの設定を選択">
-          </figure>
-          <p class="hint">画面右上の<b>「⋮」（その他）</b>→ <b>「ビジネス プロフィールの設定」</b>の順に選びます。</p>
-        </div>
-      </article>
-
-      <!-- 4 -->
-      <article class="step">
-        <div class="rail"><div class="step-num">4</div></div>
-        <div class="content">
-          <h2 class="step-title">「ユーザーとアクセス権」を選択します。</h2>
-          <figure class="shot">
-            <div class="shot-bar"><i></i><i></i><i></i><span>ビジネス プロフィールの設定</span></div>
-            <img src="assets/shots/03-settings.png" alt="設定メニューのユーザーとアクセス権">
-          </figure>
-        </div>
-      </article>
-
-      <!-- 5 -->
-      <article class="step">
-        <div class="rail"><div class="step-num">5</div></div>
-        <div class="content">
-          <h2 class="step-title">左上の「追加」を押します。</h2>
-          <figure class="shot">
-            <div class="shot-bar"><i></i><i></i><i></i><span>ユーザーとアクセス権</span></div>
-            <img src="assets/shots/04-users-access.png" alt="ユーザーとアクセス権の追加ボタン">
-          </figure>
-          <p class="hint"><b>「＋ 追加」</b>をクリックします。</p>
-        </div>
-      </article>
-
-      <!-- 6 -->
-      <article class="step">
-        <div class="rail"><div class="step-num">6</div></div>
-        <div class="content">
-          <h2 class="step-title">メールアドレスを入力し、「管理者」を選択して「招待する」を押します。</h2>
-          <p class="step-body">下記の <strong>FoodLuck のメールアドレス</strong> を入力し、アクセス権で<strong>「管理者」</strong>を選択してから<strong>「招待する」</strong>を押すと、相手に招待メールが届きます。</p>
-          <div class="email-callout">
-            <span class="email-callout-label">追加するメールアドレス</span>
-            <span class="email-callout-addr">n0riaki1977@gmail.com</span>
-            <p class="email-callout-note">設定後、FoodLuck 側で運用アカウント<strong>「kojima@foodluck.tokyo」</strong>を追加し、メインの運用はこちらで行います。n0riaki1977@gmail.com はバックアップとして使用します。</p>
-          </div>
-          <figure class="shot">
-            <div class="shot-bar"><i></i><i></i><i></i><span>ユーザーを追加する</span></div>
-            <img src="assets/shots/05-add-user.png" alt="メールアドレス入力と管理者の選択画面">
-          </figure>
-        </div>
-      </article>
-
-      <!-- 7 -->
-      <article class="step">
-        <div class="rail"><div class="step-num">7</div></div>
-        <div class="content">
-          <h2 class="step-title">招待が承認されると、管理者として追加されます。</h2>
-          <div class="done-box">
-            <span class="check">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#F8E838" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            </span>
-            <p>招待メールが承認されると、新しいユーザーが<strong>管理者</strong>として追加されます。これで設定は完了です。</p>
-          </div>
-        </div>
-      </article>
-
-    </section>
-
-    
-    <section class="reference">
-      <span class="ref-eyebrow">参考</span>
-      <p>詳細な点については、お手数ですが実際の Google ガイドラインをご確認ください。</p>
-      <a class="ref-link" href="https://support.google.com/business/answer/3403100" target="_blank" rel="noopener">
-        ビジネスのオーナーと管理者を追加、削除する（Google ヘルプ）
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"></path><path d="M7 7h10v10"></path></svg>
-      </a>
-    </section>
-
-    
-    <!-- ===== CHAPTER 2 ===== -->
-    <div class="chapter-head" id="ch2">
-      <span class="chapter-no">02</span>
-      <div>
-        <span class="chapter-eyebrow">STEP 02 ／ FACEBOOK ・ META BUSINESS SUITE</span>
-        <h2 class="chapter-title">Facebookページに管理者を追加</h2>
-        <p class="chapter-desc">Meta Business Suite から FoodLuck を「全権限」で追加します。管理権限をお持ちの方のみ操作できます。</p>
-      </div>
+    <div class="hero-stats">
+      <span><strong>26</strong>資料</span>
+      <span><strong>288</strong>章</span>
     </div>
-
-    <section class="steps">
-
-      <!-- 1 -->
-      <article class="step">
-        <div class="rail"><div class="step-num">1</div></div>
-        <div class="content">
-          <h2 class="step-title">Facebookページの「設定」を開きます。</h2>
-          <p class="step-body">管理権限をお持ちのアカウントでログインし、対象のFacebookページの管理画面を開きます。</p>
-          <figure class="shot">
-            <div class="shot-bar"><i></i><i></i><i></i><span>ページを管理</span></div>
-            <img src="assets/shots-fb/fb-01-settings.png" alt="Facebookページの管理画面、左メニューの設定">
-          </figure>
-          <p class="hint">左メニュー下部の<b>「設定」</b>をクリックします。</p>
-        </div>
-      </article>
-
-      <!-- 2 -->
-      <article class="step">
-        <div class="rail"><div class="step-num">2</div></div>
-        <div class="content">
-          <h2 class="step-title">「ページ設定」から「ページアクセス」を開きます。</h2>
-          <figure class="shot">
-            <div class="shot-bar"><i></i><i></i><i></i><span>ページ設定</span></div>
-            <img src="assets/shots-fb/fb-02-page-access.png" alt="ページ設定の中のページアクセス">
-          </figure>
-          <p class="hint"><b>「ページアクセス」</b>を選びます。ページの共同管理者の招待やアクセス許可を管理する画面です。</p>
-        </div>
-      </article>
-
-      <!-- 3 -->
-      <article class="step">
-        <div class="rail"><div class="step-num">3</div></div>
-        <div class="content">
-          <h2 class="step-title">「Meta Business Suiteに移動」して管理画面を開きます。</h2>
-          <p class="step-body">ユーザーとアクセス権は <strong>Meta Business Suite（ビジネスポートフォリオ）</strong> でまとめて管理します。</p>
-          <figure class="shot">
-            <div class="shot-bar"><i></i><i></i><i></i><span>ページのアクセスを管理・閲覧</span></div>
-            <img src="assets/shots-fb/fb-03-move-to-bs.png" alt="Meta Business Suiteに移動するダイアログ">
-          </figure>
-          <p class="hint">案内ダイアログの<b>「Meta Business Suiteに移動」</b>を押します。</p>
-        </div>
-      </article>
-
-      <!-- 4 -->
-      <article class="step">
-        <div class="rail"><div class="step-num">4</div></div>
-        <div class="content">
-          <h2 class="step-title">Meta Business Suite で対象のページが表示されます。</h2>
-          <p class="step-body">移動すると、Facebookページに割り当てられているユーザー（管理者）の一覧が表示されます。新しく追加するには、左メニューの<strong>「ユーザー」→「メンバーを招待」</strong>へ進みます。</p>
-          <figure class="shot">
-            <div class="shot-bar"><i></i><i></i><i></i><span>Meta Business Suite ／ ビジネスポートフォリオ</span></div>
-            <img src="assets/shots-fb/fb-bs-landing.png" alt="Meta Business Suiteのページ管理画面">
-          </figure>
-          <p class="hint">現在の管理者は<b>「フルアクセス許可を持つ人」</b>で確認できます。</p>
-        </div>
-      </article>
-
-      <!-- 5 -->
-      <article class="step">
-        <div class="rail"><div class="step-num">5</div></div>
-        <div class="content">
-          <h2 class="step-title">招待相手のメールアドレスを入力します。</h2>
-          <p class="step-body">Meta Business Suite の「ユーザー」から<strong>「メンバーを招待」</strong>を開き、下記の <strong>FoodLuck のメールアドレス</strong> を入力します。</p>
-          <div class="email-callout">
-            <span class="email-callout-label">追加するメールアドレス</span>
-            <span class="email-callout-addr">n0riaki1977@gmail.com</span>
-            <p class="email-callout-note">設定後、FoodLuck 側で運用アカウント<strong>「kojima@foodluck.tokyo」</strong>を追加し、メインの運用はこちらで行います。n0riaki1977@gmail.com はバックアップとして使用します。</p>
-          </div>
-          <figure class="shot">
-            <div class="shot-bar"><i></i><i></i><i></i><span>他の人を招待 ／ メールアドレスを入力</span></div>
-            <img src="assets/shots-fb/fb-04-email.png" alt="招待するメールアドレスの入力画面">
-          </figure>
-          <p class="hint"><b>「一時的なアクセス」はオフ</b>のまま、「次へ」を押します。</p>
-        </div>
-      </article>
-
-      <!-- 5 -->
-      <article class="step">
-        <div class="rail"><div class="step-num">6</div></div>
-        <div class="content">
-          <h2 class="step-title">アクセス権を「全権限」に設定します。</h2>
-          <p class="step-body"><strong>「全権限」</strong>の<strong>「管理する」</strong>をオンにします。ページの連携や各種設定を FoodLuck 側で行うために必要です。</p>
-          <figure class="shot">
-            <div class="shot-bar"><i></i><i></i><i></i><span>ビジネスポートフォリオへのアクセスを許可する</span></div>
-            <img src="assets/shots-fb/fb-05-access.png" alt="全権限・管理するを選択する画面">
-          </figure>
-          <p class="hint">ラジオが<b>濃い青色</b>になっていれば選択済みです。「次へ」を押します。</p>
-        </div>
-      </article>
-
-      <!-- 6 -->
-      <article class="step">
-        <div class="rail"><div class="step-num">7</div></div>
-        <div class="content">
-          <h2 class="step-title">割り当てるアセット（Facebookページ）を選択します。</h2>
-          <p class="step-body">プルダウンから、対象の<strong>Facebookページ</strong>と Instagram アカウントにチェックを入れます。</p>
-          <figure class="shot">
-            <div class="shot-bar"><i></i><i></i><i></i><span>ビジネスアセットを割り当てる</span></div>
-            <img src="assets/shots-fb/fb-06-assets.png" alt="Facebookページとアセットを選択する画面">
-          </figure>
-          <p class="hint">チェックを入れたら<b>「選択を確定」</b>を押します。</p>
-        </div>
-      </article>
-
-      <!-- 7 -->
-      <article class="step">
-        <div class="rail"><div class="step-num">8</div></div>
-        <div class="content">
-          <h2 class="step-title">各アセットに「全権限」を割り当てます。</h2>
-          <figure class="shot">
-            <div class="shot-bar"><i></i><i></i><i></i><span>ビジネスアセットを割り当てる</span></div>
-            <img src="assets/shots-fb/fb-07-asset-perm.png" alt="各アセットに全権限を割り当てる画面">
-          </figure>
-          <p class="hint">Facebookページ・Instagram それぞれで<b>「全権限（すべて）」</b>をオンにし、「次へ」を押します。</p>
-        </div>
-      </article>
-
-      <!-- 8 -->
-      <article class="step">
-        <div class="rail"><div class="step-num">9</div></div>
-        <div class="content">
-          <h2 class="step-title">内容を確認して招待を送信します。</h2>
-          <p class="step-body">招待先のメールアドレスと、割り当てるアセットを確認します。問題なければ<strong>「招待」</strong>を押します。</p>
-          <figure class="shot">
-            <div class="shot-bar"><i></i><i></i><i></i><span>招待を確認 ／ レビュー</span></div>
-            <img src="assets/shots-fb/fb-08-review.png" alt="招待内容の確認画面">
-          </figure>
-        </div>
-      </article>
-
-      <!-- 9 -->
-      <article class="step">
-        <div class="rail"><div class="step-num">10</div></div>
-        <div class="content">
-          <h2 class="step-title">招待が送信されました。承認されると追加完了です。</h2>
-          <figure class="shot">
-            <div class="shot-bar"><i></i><i></i><i></i><span>招待が送信されました</span></div>
-            <img src="assets/shots-fb/fb-09-sent.png" alt="招待が送信されましたの画面">
-          </figure>
-          <div class="done-box">
-            <span class="check">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#F8E838" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            </span>
-            <p>招待先に招待メールが届きます。相手が承認すると、<strong>管理者</strong>として追加が完了します。<small>※招待の有効期限は、送信から365日です。</small></p>
-          </div>
-        </div>
-      </article>
-
-    </section>
-
-    
-    <section class="reference">
-      <span class="ref-eyebrow">参考</span>
-      <p>画面のデザインや名称は Meta 側の更新により変わる場合があります。詳細は実際の Meta ガイドラインをご確認ください。</p>
-      <a class="ref-link" href="https://www.facebook.com/business/help/2169003770027706" target="_blank" rel="noopener">
-        ビジネスポートフォリオにメンバーを追加してビジネスアセットを割り当てる（Meta ヘルプ）
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"></path><path d="M7 7h10v10"></path></svg>
-      </a>
-    </section>
-
-    
-    <!-- ===== CHAPTER 3 ===== -->
-    <div class="chapter-head" id="ch3">
-      <span class="chapter-no">03</span>
-      <div>
-        <span class="chapter-eyebrow">STEP 03 ／ ACCOUNT INFORMATION</span>
-        <h2 class="chapter-title">各SNS・グルメサイトのログイン情報を共有</h2>
-        <p class="chapter-desc">運用に必要なログイン情報をご共有ください。Instagram・食べログは必須、その他はご契約の方のみで構いません。</p>
+  </header>
+  <main>
+    <section class="search-panel" id="search">
+      <label for="searchInput">キーワード検索</label>
+      <div class="search-box">
+        <input id="searchInput" type="search" placeholder="例：クチコミ、投稿、順位、GBP、写真">
+        <button id="clearSearch" type="button" aria-label="検索語を消す">×</button>
       </div>
+      <div id="searchMeta" class="search-meta"></div>
+      <div id="searchResults" class="search-results"></div>
+    </section>
+    <section class="manual-section">
+  <div class="section-heading">
+    <p class="eyebrow">19件</p>
+    <h2>機能別マニュアル</h2>
+  </div>
+  <div class="manual-grid">
+    <article class="manual-card">
+  <a href="manuals/01-基本操作.html">
+    <img src="assets/previews/01-基本操作-preview.png" alt="基本操作のプレビュー">
+    <div>
+      <p class="eyebrow">FoodLuck MEO 操作説明書 01</p>
+      <h3>基本操作</h3>
+      <p>FoodLuck MEO 操作説明書 01 基本操作 店舗一覧から管理画面を開き、目的のメニューへ迷わず進むための最初の資料 この資料でできるようになること FoodLuck MEOにログインした後、自分の店舗を開き、左メニューから必要な画面へ進めるようになります。この資料は、写真投稿やクチコミ返信などの細かい操作に入</p>
     </div>
-<div class="body-wrap">
-
-      <!-- ===== SECTION 1: SNS ===== -->
-      <section class="section">
-        <div class="section-head">
-          <span class="section-no">1</span>
-          <h2 class="section-title">SNSのログイン情報</h2>
-        </div>
-        <p class="section-desc"><strong>Instagram は必須</strong>です。X はご契約の方のみご共有ください。</p>
-
-        <!-- Instagram -->
-        <div class="svc">
-          <div class="svc-head">
-            <h3 class="svc-name">Instagram</h3>
-            <span class="badge badge-req">必須</span>
-          </div>
-          <p class="svc-sub svc-sub--req">FoodLuck MEO をご利用のすべての店舗さまにご共有をお願いします。</p>
-          <div class="need">
-            <span class="need-label">ご共有いただきたい情報</span>
-            <ul class="need-list">
-              <li>ユーザーネーム（＠）または登録メールアドレス</li>
-              <li>パスワード</li>
-              <li>連携中のFacebookページ・2段階認証の有無（設定がある場合）</li>
-            </ul>
-          </div>
-          <p class="svc-foot">2段階認証を設定されている場合は、その旨をお知らせください。承認手続きをご案内します。</p>
-        </div>
-
-        <!-- X -->
-        <div class="svc optional">
-          <div class="svc-head">
-            <h3 class="svc-name">X（旧Twitter）</h3>
-            <span class="badge badge-opt">任意・ご契約の方のみ</span>
-          </div>
-          <p class="svc-sub">X の運用をご契約いただいている店舗さまのみご共有ください。</p>
-          <div class="need">
-            <span class="need-label">ご共有いただきたい情報</span>
-            <ul class="need-list">
-              <li>ユーザー名（＠）または登録メールアドレス・電話番号</li>
-              <li>パスワード</li>
-              <li>2段階認証の有無（設定がある場合）</li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <!-- ===== SECTION 2: グルメサイト ===== -->
-      <section class="section">
-        <div class="section-head">
-          <span class="section-no">2</span>
-          <h2 class="section-title">グルメサイトのログイン情報</h2>
-        </div>
-        <p class="section-desc"><strong>食べログは原則必須</strong>です。ぐるなび・ホットペッパーはご契約の方のみで構いません。</p>
-
-        <!-- 食べログ -->
-        <div class="svc">
-          <div class="svc-head">
-            <h3 class="svc-name">食べログ</h3>
-            <span class="badge badge-req">必須</span>
-          </div>
-          <p class="svc-sub svc-sub--req">店舗管理画面（店舗会員ページ）のログイン情報をご共有ください。</p>
-          <div class="need">
-            <span class="need-label">ご共有いただきたい情報</span>
-            <ul class="need-list">
-              <li>ログインID または登録メールアドレス</li>
-              <li>パスワード</li>
-              <li>店舗名・店舗ページURL（わかる範囲で）</li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- ぐるなび -->
-        <div class="svc optional">
-          <div class="svc-head">
-            <h3 class="svc-name">ぐるなび</h3>
-            <span class="badge badge-opt">任意・ご契約の方のみ</span>
-          </div>
-          <p class="svc-sub">ぐるなびをご契約いただいている店舗さまのみご共有ください。</p>
-          <div class="need">
-            <span class="need-label">ご共有いただきたい情報</span>
-            <ul class="need-list">
-              <li>ログインID または登録メールアドレス</li>
-              <li>パスワード</li>
-              <li>店舗名・店舗ページURL（わかる範囲で）</li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- ホットペッパー -->
-        <div class="svc optional">
-          <div class="svc-head">
-            <h3 class="svc-name">ホットペッパー グルメ</h3>
-            <span class="badge badge-opt">任意・ご契約の方のみ</span>
-          </div>
-          <p class="svc-sub">ホットペッパーをご契約いただいている店舗さまのみご共有ください。</p>
-          <div class="need">
-            <span class="need-label">ご共有いただきたい情報</span>
-            <ul class="need-list">
-              <li>ログインID または登録メールアドレス</li>
-              <li>パスワード</li>
-              <li>店舗名・管理画面の種別（わかる範囲で）</li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
+  </a>
+  <div class="card-actions">
+    <a class="small-link" href="manuals/01-基本操作.html">Webで読む</a>
+    <a class="small-link" href="assets/pdfs/01_FoodLuck_MEO_基本操作_操作説明書.pdf" target="_blank" rel="noopener">PDF</a>
+  </div>
+</article><article class="manual-card">
+  <a href="manuals/02-初期設定.html">
+    <img src="assets/previews/02_FoodLuck_MEO_初期設定_プレビュー.png" alt="初期設定のプレビュー">
+    <div>
+      <p class="eyebrow">FoodLuck MEO 操作説明書 02</p>
+      <h3>初期設定</h3>
+      <p>FoodLuck MEO 操作説明書 02 初期設定 GBP連携・ユーザー追加・グループ作成・順位計測設定を、現場で確認できる形に整理した資料 この資料の使い方 初期設定は、店舗側が確認する項目とFoodLuck側で対応する項目が混ざります。この資料では、店舗側で判断が必要な確認事項、FoodLuckへ依頼する作業、実</p>
     </div>
-
+  </a>
+  <div class="card-actions">
+    <a class="small-link" href="manuals/02-初期設定.html">Webで読む</a>
+    <a class="small-link" href="assets/pdfs/02_FoodLuck_MEO_初期設定_操作説明書.pdf" target="_blank" rel="noopener">PDF</a>
+  </div>
+</article><article class="manual-card">
+  <a href="manuals/03-その他.html">
+    <img src="assets/previews/03_FoodLuck_MEO_その他_プレビュー.png" alt="その他のプレビュー">
+    <div>
+      <p class="eyebrow">FoodLuck MEO 操作説明書 03</p>
+      <h3>その他</h3>
+      <p>FoodLuck MEO 操作説明書 03 その他 店舗追加・店舗データ更新・スマホ版・ワークフロー・通知やセキュリティ設定の確認資料 このカテゴリの考え方 「その他」には、日常の投稿やクチコミ返信ではなく、設定変更、確認、トラブル対応に関わる機能が集まっています。店舗側で見てよいもの、FoodLuck側へ相談してから</p>
+    </div>
+  </a>
+  <div class="card-actions">
+    <a class="small-link" href="manuals/03-その他.html">Webで読む</a>
+    <a class="small-link" href="assets/pdfs/03_FoodLuck_MEO_その他_操作説明書.pdf" target="_blank" rel="noopener">PDF</a>
+  </div>
+</article><article class="manual-card">
+  <a href="manuals/04-店舗基本情報.html">
+    <img src="assets/previews/04_FoodLuck_MEO_店舗基本情報_プレビュー.png" alt="店舗基本情報のプレビュー">
+    <div>
+      <p class="eyebrow">FoodLuck MEO 操作説明書 04</p>
+      <h3>店舗基本情報</h3>
+      <p>FoodLuck MEO 操作説明書 04 店舗基本情報 お客様がGoogleで見た時の店舗情報を正しく整えるための現場運用マニュアル この資料の目的 店舗名、住所、電話番号、営業時間、Webサイト、SNS、予約リンク、メニュー関連リンクなどは、お客様の来店前の判断に直結します。FoodLuck MEOでは、Googl</p>
+    </div>
+  </a>
+  <div class="card-actions">
+    <a class="small-link" href="manuals/04-店舗基本情報.html">Webで読む</a>
+    <a class="small-link" href="assets/pdfs/04_FoodLuck_MEO_店舗基本情報_操作説明書.pdf" target="_blank" rel="noopener">PDF</a>
+  </div>
+</article><article class="manual-card">
+  <a href="manuals/05-写真管理.html">
+    <img src="assets/previews/05_FoodLuck_MEO_写真管理_プレビュー.png" alt="写真管理のプレビュー">
+    <div>
+      <p class="eyebrow">FoodLuck MEO 操作説明書 05</p>
+      <h3>写真管理</h3>
+      <p>FoodLuck MEO 操作説明書 05 写真管理 料理・外観・店内・ロゴ・カバー写真を整え、Google上の来店前印象を良くするための現場運用マニュアル この資料の目的 飲食店では、写真は来店前のお客様が雰囲気や料理を判断する大きな材料です。FoodLuck MEOの写真管理では、Googleビジネスプロフィールや</p>
+    </div>
+  </a>
+  <div class="card-actions">
+    <a class="small-link" href="manuals/05-写真管理.html">Webで読む</a>
+    <a class="small-link" href="assets/pdfs/05_FoodLuck_MEO_写真管理_操作説明書.pdf" target="_blank" rel="noopener">PDF</a>
+  </div>
+</article><article class="manual-card">
+  <a href="manuals/06-投稿.html">
+    <img src="assets/previews/06_FoodLuck_MEO_投稿_プレビュー.png" alt="投稿のプレビュー">
+    <div>
+      <p class="eyebrow">FoodLuck MEO 操作説明書 06</p>
+      <h3>投稿</h3>
+      <p>FoodLuck MEO 操作説明書 06 投稿 Google・Yahoo!・SNSへ店舗のお知らせを出し、来店前のお客様へ今の情報を届けるための現場運用マニュアル この資料の目的 投稿は、Google検索やGoogleマップ上でお店が今も動いていることを伝える機能です。新メニュー、営業時間変更、イベント、キャンペーン</p>
+    </div>
+  </a>
+  <div class="card-actions">
+    <a class="small-link" href="manuals/06-投稿.html">Webで読む</a>
+    <a class="small-link" href="assets/pdfs/06_FoodLuck_MEO_投稿_操作説明書.pdf" target="_blank" rel="noopener">PDF</a>
+  </div>
+</article><article class="manual-card">
+  <a href="manuals/07-クチコミ返信.html">
+    <img src="assets/previews/07_FoodLuck_MEO_クチコミ返信_プレビュー.png" alt="クチコミ返信のプレビュー">
+    <div>
+      <p class="eyebrow">FoodLuck MEO 操作説明書 07</p>
+      <h3>クチコミ返信</h3>
+      <p>FoodLuck MEO 操作説明書 07 クチコミ返信 Googleに投稿されたクチコミを確認し、店舗の印象を良くする返信を続けるための現場運用マニュアル この資料の目的 クチコミ返信は、投稿してくれたお客様だけでなく、これから来店するお客様にも読まれます。FoodLuck MEOでは、未返信の確認、1件ずつの返信、</p>
+    </div>
+  </a>
+  <div class="card-actions">
+    <a class="small-link" href="manuals/07-クチコミ返信.html">Webで読む</a>
+    <a class="small-link" href="assets/pdfs/07_FoodLuck_MEO_クチコミ返信_操作説明書.pdf" target="_blank" rel="noopener">PDF</a>
+  </div>
+</article><article class="manual-card">
+  <a href="manuals/08-クチコミ分析.html">
+    <img src="assets/previews/08_FoodLuck_MEO_クチコミ分析_プレビュー.png" alt="クチコミ分析のプレビュー">
+    <div>
+      <p class="eyebrow">FoodLuck MEO 操作説明書 08</p>
+      <h3>クチコミ分析</h3>
+      <p>FoodLuck MEO 操作説明書 08 クチコミ分析 お客様の声を数字とキーワードで読み、料理・接客・販促の改善に活かすための現場運用マニュアル この資料の目的 クチコミ分析は、星の数だけを見る機能ではありません。お客様が何を褒めているか、何に不満を持っているか、どの言葉が増えているかを確認し、メニュー改善、接客改</p>
+    </div>
+  </a>
+  <div class="card-actions">
+    <a class="small-link" href="manuals/08-クチコミ分析.html">Webで読む</a>
+    <a class="small-link" href="assets/pdfs/08_FoodLuck_MEO_クチコミ分析_操作説明書.pdf" target="_blank" rel="noopener">PDF</a>
+  </div>
+</article><article class="manual-card">
+  <a href="manuals/09-インサイト.html">
+    <img src="assets/previews/09_FoodLuck_MEO_インサイト_プレビュー.png" alt="インサイトのプレビュー">
+    <div>
+      <p class="eyebrow">FoodLuck MEO 操作説明書 09</p>
+      <h3>インサイト</h3>
+      <p>FoodLuck MEO 操作説明書 09 インサイト Googleで見られた回数と、お客様の行動を読み、毎月のMEO運用に活かすための現場マニュアル この資料の目的 インサイトは、Googleビジネスプロフィールがどれだけ見られ、そこから電話・ルート検索・Webサイト閲覧などにつながったかを見る画面です。売上そのもの</p>
+    </div>
+  </a>
+  <div class="card-actions">
+    <a class="small-link" href="manuals/09-インサイト.html">Webで読む</a>
+    <a class="small-link" href="assets/pdfs/09_FoodLuck_MEO_インサイト_操作説明書.pdf" target="_blank" rel="noopener">PDF</a>
+  </div>
+</article><article class="manual-card">
+  <a href="manuals/10-順位.html">
+    <img src="assets/previews/10_FoodLuck_MEO_順位_プレビュー.png" alt="順位のプレビュー">
+    <div>
+      <p class="eyebrow">FoodLuck MEO 操作説明書 10</p>
+      <h3>順位</h3>
+      <p>FoodLuck MEO 操作説明書 10 順位 検索順位の推移、キーワード別の強弱、商圏内の見つかりやすさを確認するための現場マニュアル この資料の目的 順位レポートは、Google検索やGoogleマップで店舗がどの位置に表示されているかを見る機能です。飲食店では、地域名、業態名、主力メニュー名などのキーワードで見</p>
+    </div>
+  </a>
+  <div class="card-actions">
+    <a class="small-link" href="manuals/10-順位.html">Webで読む</a>
+    <a class="small-link" href="assets/pdfs/10_FoodLuck_MEO_順位_操作説明書.pdf" target="_blank" rel="noopener">PDF</a>
+  </div>
+</article><article class="manual-card">
+  <a href="manuals/11-クチコミ促進.html">
+    <img src="assets/previews/11_FoodLuck_MEO_クチコミ促進_プレビュー.png" alt="クチコミ促進のプレビュー">
+    <div>
+      <p class="eyebrow">FoodLuck MEO 操作説明書 11</p>
+      <h3>クチコミ促進</h3>
+      <p>FoodLuck MEO 操作説明書 11 クチコミ促進 アンケート、二次元バーコード、メール・SMS依頼を使い、Googleクチコミを無理なく増やすための現場マニュアル この資料の目的 クチコミ促進は、お客様にアンケートURLや二次元バーコードを案内し、回答後にGoogleのクチコミ画面へ進んでもらうための機能です。</p>
+    </div>
+  </a>
+  <div class="card-actions">
+    <a class="small-link" href="manuals/11-クチコミ促進.html">Webで読む</a>
+    <a class="small-link" href="assets/pdfs/11_FoodLuck_MEO_クチコミ促進_操作説明書.pdf" target="_blank" rel="noopener">PDF</a>
+  </div>
+</article><article class="manual-card">
+  <a href="manuals/12-クーポン管理.html">
+    <img src="assets/previews/12_FoodLuck_MEO_クーポン管理_プレビュー.png" alt="クーポン管理のプレビュー">
+    <div>
+      <p class="eyebrow">FoodLuck MEO 操作説明書 12</p>
+      <h3>クーポン管理</h3>
+      <p>FoodLuck MEO 操作説明書 12 クーポン管理 割引クーポンの作成、投稿での配布、店舗での読み取りまでを迷わず進めるための現場マニュアル この資料の目的 クーポン管理は、実店舗で利用できる割引クーポンをFoodLuck MEO上で発行し、Google投稿などからお客様に案内する機能です。店舗側では、クーポン内</p>
+    </div>
+  </a>
+  <div class="card-actions">
+    <a class="small-link" href="manuals/12-クーポン管理.html">Webで読む</a>
+    <a class="small-link" href="assets/pdfs/12_FoodLuck_MEO_クーポン管理_操作説明書.pdf" target="_blank" rel="noopener">PDF</a>
+  </div>
+</article><article class="manual-card">
+  <a href="manuals/13-webサイト最適化機能.html">
+    <img src="assets/previews/13_FoodLuck_MEO_WEBサイト最適化機能_プレビュー.png" alt="WEBサイト最適化機能のプレビュー">
+    <div>
+      <p class="eyebrow">FoodLuck MEO 操作説明書 13</p>
+      <h3>WEBサイト最適化機能</h3>
+      <p>FoodLuck MEO 操作説明書 13 WEBサイト最適化機能 HP連携、HP投稿連携、HP FAQ、構造化データ、クチコミ評価要約を正しく使うための現場マニュアル この資料の目的 WEBサイト最適化機能は、FoodLuck MEOで管理している店舗情報や投稿、FAQ、クチコミ要約などを自社HPへ表示しやすくする機</p>
+    </div>
+  </a>
+  <div class="card-actions">
+    <a class="small-link" href="manuals/13-webサイト最適化機能.html">Webで読む</a>
+    <a class="small-link" href="assets/pdfs/13_FoodLuck_MEO_WEBサイト最適化機能_操作説明書.pdf" target="_blank" rel="noopener">PDF</a>
+  </div>
+</article><article class="manual-card">
+  <a href="manuals/14-店舗ページ限定機能.html">
+    <img src="assets/previews/14_FoodLuck_MEO_店舗ページ限定機能_プレビュー.png" alt="店舗ページ限定機能のプレビュー">
+    <div>
+      <p class="eyebrow">FoodLuck MEO 操作説明書 14</p>
+      <h3>店舗ページ限定機能</h3>
+      <p>FoodLuck MEO 操作説明書 14 店舗ページ限定機能 インサイト補足、飲食店メニュー、AI運用アシスタント、競合分析、順位変動アラートを使うための現場マニュアル この資料の目的 店舗ページ限定機能は、通常の投稿・写真・クチコミ返信より一段進んだ運用確認をするための機能です。飲食店の現場では、毎日触る機能という</p>
+    </div>
+  </a>
+  <div class="card-actions">
+    <a class="small-link" href="manuals/14-店舗ページ限定機能.html">Webで読む</a>
+    <a class="small-link" href="assets/pdfs/14_FoodLuck_MEO_店舗ページ限定機能_操作説明書.pdf" target="_blank" rel="noopener">PDF</a>
+  </div>
+</article><article class="manual-card">
+  <a href="manuals/15-グループ管理.html">
+    <img src="assets/previews/15_FoodLuck_MEO_グループ管理_プレビュー.png" alt="グループ管理のプレビュー">
+    <div>
+      <p class="eyebrow">FoodLuck MEO 操作説明書 15</p>
+      <h3>グループ管理</h3>
+      <p>FoodLuck MEO 操作説明書 15 グループ管理 複数店舗のグループ作成、比較、店舗変更、データ確認を迷わず進めるための本部・多店舗向けマニュアル この資料の目的 グループ管理は、複数店舗をまとめて確認・比較するための機能です。飲食店の現場では、個店操作とは違い、本部担当者や複数店舗を管理する責任者が使う場面が</p>
+    </div>
+  </a>
+  <div class="card-actions">
+    <a class="small-link" href="manuals/15-グループ管理.html">Webで読む</a>
+    <a class="small-link" href="assets/pdfs/15_FoodLuck_MEO_グループ管理_操作説明書.pdf" target="_blank" rel="noopener">PDF</a>
+  </div>
+</article><article class="manual-card">
+  <a href="manuals/16-データダウンロード.html">
+    <img src="assets/previews/16_FoodLuck_MEO_データダウンロード_プレビュー.png" alt="データダウンロードのプレビュー">
+    <div>
+      <p class="eyebrow">FoodLuck MEO 操作説明書 16</p>
+      <h3>データダウンロード</h3>
+      <p>FoodLuck MEO 操作説明書 16 データダウンロード インサイト・順位データをCSVで出力し、月次レポートや店舗改善に使うための実務マニュアル この資料の目的 データダウンロードは、FoodLuck MEOの画面で見ている数値をCSVとして出力し、月次報告や店舗別の比較に使うための機能です。この資料では、どの</p>
+    </div>
+  </a>
+  <div class="card-actions">
+    <a class="small-link" href="manuals/16-データダウンロード.html">Webで読む</a>
+    <a class="small-link" href="assets/pdfs/16_FoodLuck_MEO_データダウンロード_操作説明書.pdf" target="_blank" rel="noopener">PDF</a>
+  </div>
+</article><article class="manual-card">
+  <a href="manuals/17-sns連携機能.html">
+    <img src="assets/previews/17_FoodLuck_MEO_SNS連携機能_プレビュー.png" alt="SNS連携機能のプレビュー">
+    <div>
+      <p class="eyebrow">FoodLuck MEO 操作説明書 17</p>
+      <h3>SNS連携機能</h3>
+      <p>FoodLuck MEO 操作説明書 17 SNS連携機能 X、Facebook、Instagram、LINEをFoodLuck MEOと連携し、投稿・分析・配信を安全に運用するための実務マニュアル この資料の目的 SNS連携機能は、FoodLuck MEOと各SNS・LINE公式アカウントをつなぎ、投稿の同時配信、S</p>
+    </div>
+  </a>
+  <div class="card-actions">
+    <a class="small-link" href="manuals/17-sns連携機能.html">Webで読む</a>
+    <a class="small-link" href="assets/pdfs/17_FoodLuck_MEO_SNS連携機能_操作説明書.pdf" target="_blank" rel="noopener">PDF</a>
+  </div>
+</article><article class="manual-card">
+  <a href="manuals/18-各媒体連携機能.html">
+    <img src="assets/previews/18_FoodLuck_MEO_各媒体連携機能_プレビュー.png" alt="各媒体連携機能のプレビュー">
+    <div>
+      <p class="eyebrow">FoodLuck MEO 操作説明書 18</p>
+      <h3>各媒体連携機能</h3>
+      <p>FoodLuck MEO 操作説明書 18 各媒体連携機能 Yahoo!プレイス、Appleマップ、食べログ、エキテンなど外部媒体をFoodLuck MEOから安全に更新するための実務マニュアル この資料の目的 各媒体連携機能は、Google以外の集客媒体にも店舗情報、写真、投稿、クチコミ、インサイトなどを連携するため</p>
+    </div>
+  </a>
+  <div class="card-actions">
+    <a class="small-link" href="manuals/18-各媒体連携機能.html">Webで読む</a>
+    <a class="small-link" href="assets/pdfs/18_FoodLuck_MEO_各媒体連携機能_操作説明書.pdf" target="_blank" rel="noopener">PDF</a>
+  </div>
+</article><article class="manual-card">
+  <a href="manuals/19-googleについて.html">
+    <img src="assets/previews/19_FoodLuck_MEO_Googleについて_プレビュー.png" alt="Googleについてのプレビュー">
+    <div>
+      <p class="eyebrow">FoodLuck MEO 操作説明書 19</p>
+      <h3>Googleについて</h3>
+      <p>FoodLuck MEO 操作説明書 19 Googleについて Googleビジネスプロフィールの基本、オーナー権限、ステータス、クチコミ未反映、重複・停止時の対応を現場向けに整理した実務マニュアル この資料の目的 この資料はFAQ「Googleについて」カテゴリの64記事をもとに、飲食店の現場で判断に迷いやすいGo</p>
+    </div>
+  </a>
+  <div class="card-actions">
+    <a class="small-link" href="manuals/19-googleについて.html">Webで読む</a>
+    <a class="small-link" href="assets/pdfs/19_FoodLuck_MEO_Googleについて_操作説明書.pdf" target="_blank" rel="noopener">PDF</a>
+  </div>
+</article>
+  </div>
+</section><section class="manual-section">
+  <div class="section-heading">
+    <p class="eyebrow">5件</p>
+    <h2>FAQ・運用資料</h2>
+  </div>
+  <div class="manual-grid">
+    <article class="manual-card">
+  <a href="manuals/foodluck-meo-飲食店向け操作説明書-faq全カテゴリ本文反映版.html">
+    <img src="assets/previews/foodluck-meo-飲食店向け操作説明書-faq全カテゴリ本文反映版-preview.png" alt="FoodLuck MEO 飲食店向け操作説明書 FAQ全カテゴリ本文反映版のプレビュー">
+    <div>
+      <p class="eyebrow">FAQ・運用資料</p>
+      <h3>FoodLuck MEO 飲食店向け操作説明書 FAQ全カテゴリ本文反映版</h3>
+      <p>FoodLuck MEO 飲食店向け操作説明書 FAQ全カテゴリ本文反映版 / 日常運用・初期設定・連携機能まで網羅 この版の位置づけ MEOダッシュボードFAQ全548記事の本文を取得し、未取得0件で反映確認しました。飲食店スタッフが操作する項目、FoodLuck側または管理者が対応する項目、必要時に確認する項目を分</p>
+    </div>
+  </a>
+  <div class="card-actions">
+    <a class="small-link" href="manuals/foodluck-meo-飲食店向け操作説明書-faq全カテゴリ本文反映版.html">Webで読む</a>
+    <a class="small-link" href="assets/pdfs/FoodLuck_MEO_飲食店向け操作説明書_FAQ全カテゴリ本文反映版.pdf" target="_blank" rel="noopener">PDF</a>
+  </div>
+</article><article class="manual-card">
+  <a href="manuals/foodluck-meo-飲食店向け操作説明書-faq全記事詳細反映版.html">
+    <img src="assets/previews/foodluck-meo-飲食店向け操作説明書-faq全記事詳細反映版-preview.png" alt="FoodLuck MEO 飲食店向け操作説明書 FAQ全記事詳細反映版のプレビュー">
+    <div>
+      <p class="eyebrow">FAQ・運用資料</p>
+      <h3>FoodLuck MEO 飲食店向け操作説明書 FAQ全記事詳細反映版</h3>
+      <p>FoodLuck MEO 飲食店向け操作説明書 FAQ全記事詳細反映版 / 各カテゴリ下層記事の本文を操作・注意点まで統合 この版で直したこと FAQ全548記事の本文を、カテゴリ直下だけでなく下層記事ごとに確認し、各記事の概要・操作ポイント・注意点として本文化しました。単なるタイトル一覧ではなく、操作時に読める説明書</p>
+    </div>
+  </a>
+  <div class="card-actions">
+    <a class="small-link" href="manuals/foodluck-meo-飲食店向け操作説明書-faq全記事詳細反映版.html">Webで読む</a>
+    <a class="small-link" href="assets/pdfs/FoodLuck_MEO_飲食店向け操作説明書_FAQ全記事詳細反映版.pdf" target="_blank" rel="noopener">PDF</a>
+  </div>
+</article><article class="manual-card">
+  <a href="manuals/foodluck-meo-飲食店向け操作説明書-faq網羅版.html">
+    <img src="assets/previews/FoodLuck_MEO_FAQ網羅版プレビュー_1.png" alt="FoodLuck MEO 飲食店向け操作説明書 FAQ網羅版のプレビュー">
+    <div>
+      <p class="eyebrow">FAQ・運用資料</p>
+      <h3>FoodLuck MEO 飲食店向け操作説明書 FAQ網羅版</h3>
+      <p>FoodLuck MEO 飲食店向け操作説明書 FAQ網羅版 / 店舗運用で迷わないための初版 この資料の位置づけ FAQページの23カテゴリを確認し、取得できた記事タイトル548件を、飲食店が使う流れに沿って整理しました。本文は店舗運用、巻末はFAQ網羅チェックリストです。 1. まず押さえる運用の流れ</p>
+    </div>
+  </a>
+  <div class="card-actions">
+    <a class="small-link" href="manuals/foodluck-meo-飲食店向け操作説明書-faq網羅版.html">Webで読む</a>
+    <a class="small-link" href="assets/pdfs/FoodLuck_MEO_飲食店向け操作説明書_FAQ網羅版.pdf" target="_blank" rel="noopener">PDF</a>
+  </div>
+</article><article class="manual-card">
+  <a href="manuals/foodluck-meo-運用マニュアル.html">
+    <img src="assets/previews/FoodLuck_MEO_運用マニュアル_プレビュー.png" alt="FoodLuck MEO 運用マニュアルのプレビュー">
+    <div>
+      <p class="eyebrow">運用マニュアル</p>
+      <h3>FoodLuck MEO 運用マニュアル</h3>
+      <p>FoodLuck MEO 飲食店向け 運用マニュアル Google投稿、クチコミ返信、インサイトのクロス分析、順位チャートを使った日々の集客改善 毎週 随時 月1回 困った時
+Google投稿 写真追加 未返信クチコミ確認 クチコミ返信 営業時間・臨時休業確認 インサイト分析 順位チャート確認 改善テーマ決定 投稿エラ</p>
+    </div>
+  </a>
+  <div class="card-actions">
+    <a class="small-link" href="manuals/foodluck-meo-運用マニュアル.html">Webで読む</a>
+    <a class="small-link" href="assets/pdfs/FoodLuck_MEO_運用マニュアル.pdf" target="_blank" rel="noopener">PDF</a>
+  </div>
+</article><article class="manual-card">
+  <a href="manuals/foodluck-meo-飲食店向け操作説明書-現場運用版.html">
+    <img src="assets/previews/foodluck-meo-飲食店向け操作説明書-現場運用版-preview.png" alt="FoodLuck MEO 飲食店向け操作説明書 現場運用版のプレビュー">
+    <div>
+      <p class="eyebrow">運用マニュアル</p>
+      <h3>FoodLuck MEO 飲食店向け操作説明書 現場運用版</h3>
+      <p>FoodLuck MEO 飲食店向け操作説明書 現場運用版 / 画面を見ながら使えるマニュアル この資料の使い方 FAQ全548記事の詳細反映版を元に、飲食店の現場で実際に使う順番へ整理しました。すべてのFAQを長く並べるのではなく、操作画面、手順、保存前の確認、困った時の見方を中心にまとめています。 1. まずはこの</p>
+    </div>
+  </a>
+  <div class="card-actions">
+    <a class="small-link" href="manuals/foodluck-meo-飲食店向け操作説明書-現場運用版.html">Webで読む</a>
+    <a class="small-link" href="assets/pdfs/FoodLuck_MEO_飲食店向け操作説明書_現場運用版.pdf" target="_blank" rel="noopener">PDF</a>
+  </div>
+</article>
+  </div>
+</section><section class="manual-section">
+  <div class="section-heading">
+    <p class="eyebrow">2件</p>
+    <h2>その他資料</h2>
+  </div>
+  <div class="manual-grid">
+    <article class="manual-card">
+  <a href="manuals/foodluck-meo-飲食店向け操作説明書-初版.html">
+    <img src="assets/previews/foodluck-meo-飲食店向け操作説明書-初版-preview.png" alt="FoodLuck MEO 飲食店向け操作説明書 初版のプレビュー">
+    <div>
+      <p class="eyebrow">参考資料</p>
+      <h3>FoodLuck MEO 飲食店向け操作説明書 初版</h3>
+      <p>FoodLuck MEO 飲食店向け操作説明書 初版 | 飲食店オーナー・店舗担当者向け この説明書の使い方 日常的に使う「店舗情報・写真・投稿・クチコミ・数値確認」を前半にまとめました。初期設定や高度な機能は後半に置いています。画面の赤枠は、最初に見る場所や押す場所の目印です。 1. はじめに</p>
+    </div>
+  </a>
+  <div class="card-actions">
+    <a class="small-link" href="manuals/foodluck-meo-飲食店向け操作説明書-初版.html">Webで読む</a>
     
-    <section class="share">
-      <span class="share-eyebrow">ご共有方法・送付先</span>
-      <div class="send-box">
-        <span class="send-tag">送付先</span>
-        <p>上記の情報は、<strong>FoodLuck 担当・小島</strong>への<strong>直接メッセージ</strong>にてお送りください。普段ご連絡いただいている方法で結構です。</p>
-      </div>
-      <p>いただいた情報をもとに、各媒体の設定を進めてまいります。ご不明な点は小島までお気軽にお問い合わせください。</p>
-    </section>
-
-    
-    <!-- ===== FINAL CHECKLIST ===== -->
-    <section class="checklist">
-      <span class="cl-eyebrow">CHECKLIST</span>
-      <h2 class="cl-title">ご対応いただくこと チェックリスト</h2>
-      <p class="cl-lead">下記がすべて完了・ご共有されると、FoodLuck MEO の初期設定を開始できます。ご契約状況により「任意」の項目は対応不要です。</p>
-      <ul class="cl-list">
-        <li><span class="cl-box"></span><div class="cl-item"><span class="cl-name">Googleビジネスプロフィールに管理者を追加</span><span class="badge badge-req">必須</span><span class="cl-note"><strong>n0riaki1977@gmail.com</strong> を「管理者」として招待（→ STEP 01）</span></div></li>
-        <li><span class="cl-box"></span><div class="cl-item"><span class="cl-name">Facebookページに管理者を追加</span><span class="badge badge-req">必須</span><span class="cl-note"><strong>n0riaki1977@gmail.com</strong> を「全権限」で招待（→ STEP 02）</span></div></li>
-        <li><span class="cl-box"></span><div class="cl-item"><span class="cl-name">Instagram のログイン情報を共有</span><span class="badge badge-req">必須</span><span class="cl-note">ユーザーネーム／登録メール・パスワード（→ STEP 03）</span></div></li>
-        <li class="opt"><span class="cl-box"></span><div class="cl-item"><span class="cl-name">X（旧Twitter）のログイン情報を共有</span><span class="badge badge-opt">任意・ご契約の方のみ</span></div></li>
-        <li><span class="cl-box"></span><div class="cl-item"><span class="cl-name">食べログのログイン情報を共有</span><span class="badge badge-req">必須</span><span class="cl-note">店舗管理画面のID・パスワード（→ STEP 03）</span></div></li>
-        <li class="opt"><span class="cl-box"></span><div class="cl-item"><span class="cl-name">ぐるなびのログイン情報を共有</span><span class="badge badge-opt">任意・ご契約の方のみ</span></div></li>
-        <li class="opt"><span class="cl-box"></span><div class="cl-item"><span class="cl-name">ホットペッパーのログイン情報を共有</span><span class="badge badge-opt">任意・ご契約の方のみ</span></div></li>
-      </ul>
-      <div class="send-box">
-        <span class="send-tag">送付先</span>
-        <p>ログイン情報は、<strong>FoodLuck 担当・小島</strong> への<strong>直接メッセージ</strong>にてお送りください。普段ご連絡いただいている方法で結構です。</p>
-      </div>
-    </section>
-
-    <!-- ===== FOOTER ===== -->
-    <footer class="doc-footer">
-      <img src="assets/logo.png" alt="Food Luck">
-      <span>FoodLuck MEO 初期設定ガイド ／ 管理者の追加・ログイン情報のご共有</span>
-    </footer>
-
+  </div>
+</article><article class="manual-card">
+  <a href="manuals/foodluck-meo-飲食店向け操作説明書-本文反映版.html">
+    <img src="assets/previews/foodluck-meo-飲食店向け操作説明書-本文反映版-preview.png" alt="FoodLuck MEO 飲食店向け操作説明書 本文反映版のプレビュー">
+    <div>
+      <p class="eyebrow">参考資料</p>
+      <h3>FoodLuck MEO 飲食店向け操作説明書 本文反映版</h3>
+      <p>FoodLuck MEO 飲食店向け操作説明書 FAQ本文反映版 / 日常運用で使う内容を中心に再構成 この版で反映したこと MEOダッシュボードFAQの本文を取得し、飲食店側の運用に必要な399記事分を確認しました。本文は丸写しではなく、店舗現場で使いやすい手順・注意点・判断基準として整理しています。 1. まず見る</p>
+    </div>
+  </a>
+  <div class="card-actions">
+    <a class="small-link" href="manuals/foodluck-meo-飲食店向け操作説明書-本文反映版.html">Webで読む</a>
+    <a class="small-link" href="assets/pdfs/FoodLuck_MEO_飲食店向け操作説明書_本文反映版.pdf" target="_blank" rel="noopener">PDF</a>
+  </div>
+</article>
+  </div>
+</section>
   </main>
+  <script src="assets/search-index.js"></script>
+  <script src="assets/search.js"></script>
 </body>
 </html>

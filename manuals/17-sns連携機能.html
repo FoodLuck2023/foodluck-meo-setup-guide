@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SNS連携機能 | FoodLuck MEO操作説明書</title>
+  <link rel="stylesheet" href="../assets/site.css">
+</head>
+<body data-page="manual">
+  <header class="site-header">
+    <a class="brand" href="../index.html">
+      <img src="../assets/brand/logo_foodluckmeo_display.png" alt="FoodLuck MEO">
+      <span>操作説明書</span>
+    </a>
+    <a class="button" href="../index.html#search">検索へ戻る</a>
+  </header>
+  <main class="manual-layout">
+    <aside class="toc-panel">
+      <p class="eyebrow">機能別マニュアル</p>
+      <h1>SNS連携機能</h1>
+      <p>FoodLuck MEO 操作説明書 17</p>
+      <div class="button-row"><a class="button secondary" href="../assets/pdfs/17_FoodLuck_MEO_SNS連携機能_操作説明書.pdf" target="_blank" rel="noopener">PDFで見る</a></div>
+      <nav class="toc"><a href="#1-sns連携でできること">1. SNS連携でできること</a>
+<a href="#2-連携前に決めること">2. 連携前に決めること</a>
+<a href="#3-sns投稿時の注意点">3. SNS投稿時の注意点</a>
+<a href="#4-facebook・instagram連携">4. Facebook・Instagram連携</a>
+<a href="#5-x-旧twitter-連携">5. X（旧Twitter）連携</a>
+<a href="#6-instagram分析機能">6. Instagram分析機能</a>
+<a href="#7-line連携">7. LINE連携</a>
+<a href="#8-反映されない・うまくいかない時">8. 反映されない・うまくいかない時</a>
+<a href="#9-sns運用チェックリスト">9. SNS運用チェックリスト</a>
+<a href="#10-この資料に反映したfaq記事">10. この資料に反映したFAQ記事</a></nav>
+    </aside>
+    <article class="manual-content" id="content">
+      <div class="manual-meta">
+        <span>機能別マニュアル</span>
+        <span>10 セクション</span>
+        <span>14 画像</span>
+      </div>
+      <p class="lead"><strong>FoodLuck MEO 操作説明書 17</strong></p>
+<p class="lead"><strong>SNS連携機能</strong></p>
+<p class="lead">X、Facebook、Instagram、LINEをFoodLuck MEOと連携し、投稿・分析・配信を安全に運用するための実務マニュアル</p>
+<div class="table-wrap"><table><tr><th>この資料の目的 SNS連携機能は、FoodLuck MEOと各SNS・LINE公式アカウントをつなぎ、投稿の同時配信、SNS投稿のGoogle反映、Instagram分析、LINE配信を行う機能です。外部アカウントの権限や公開投稿に関わるため、店舗側で触る操作とFoodLuck側へ確認する操作を分けて理解してください。</th></tr></table></div>
+<div class="table-wrap"><table><tr><th>操作前の注意 連携、投稿、削除、LINE配信は外部媒体やお客様に影響します。アカウント権限、対象店舗、投稿内容、配信先、予約日時を確認してから操作してください。ログイン情報、APIキー、アクセストークンなどは社外へ不用意に共有しないでください。</th></tr></table></div>
+<h2 id="1-sns連携でできること">1. SNS連携でできること</h2>
+<p>SNS連携では、Googleビジネスプロフィール、Instagram、Facebook、X、LINE公式をまとめて運用できます。ただし媒体ごとに反映タイミングや制限が違います。まずは何をしたいかを決めてから設定します。</p>
+<div class="table-wrap"><table><tr><th>機能</th><th>できること</th><th>向いている運用</th><th>注意点</th></tr><tr><td>DashboardからSNS/GBP投稿</td><td>FoodLuck MEOで作った投稿をGBPとSNSへ出す</td><td>新商品、イベント、特典をまとめて告知</td><td>GBPにも必ず反映、画像は基本1枚</td></tr><tr><td>SNSからGBPへ反映</td><td>SNS投稿をGBPの最新情報へ反映</td><td>Instagram中心で運用している店</td><td>URL設定不可、先頭画像のみ反映</td></tr><tr><td>特定キーワード</td><td>指定ハッシュタグがある投稿だけGBPへ反映</td><td>複数店舗で投稿を出し分ける</td><td>#なしで登録、本文だけでは反映されない</td></tr><tr><td>Instagram分析</td><td>投稿、リール、ストーリーズ、競合、ハッシュタグを分析</td><td>投稿改善、反応確認</td><td>分析連携対象の設定が必要</td></tr><tr><td>LINE公式</td><td>メッセージ配信、あいさつ、応答、リッチビデオ</td><td>常連化、再来店促進</td><td>配信先・日時の確認が重要</td></tr></table></div>
+<p><strong>FAQ画像: SNS連携の運用フロー</strong></p>
+<p><figure><img src="../assets/manual-images/17-sns連携機能-3ebeb82cde.png" alt="SNS連携機能の画面説明"></figure></p>
+<p><strong>・</strong>運用は「Dashboardから投稿する」か「SNS投稿をGBPへ反映する」かで変わります。</p>
+<p><strong>・</strong>Instagramは、運用方式により単体連携とFacebook経由連携を使い分けます。</p>
+<h2 id="2-連携前に決めること">2. 連携前に決めること</h2>
+<p>連携前に、どの媒体を主に運用するか、GBPへ自動反映したい投稿をどう選ぶかを決めます。飲食店では、店舗限定情報と全店共通情報が混ざりやすいため、特定キーワードの設計が大切です。</p>
+<h3 id="2-1-2つの運用パターン">2-1. 2つの運用パターン</h3>
+<div class="table-wrap"><table><tr><th>運用パターン</th><th>メリット</th><th>注意点</th></tr><tr><td>DashboardからGBPとSNSへ投稿</td><td>GBP投稿とSNS投稿を同時に作成できる。GBP投稿にURLを付けられる。</td><td>画像は1枚。GBPにも必ず投稿される。</td></tr><tr><td>SNS投稿をGBPへ反映</td><td>SNS運用のついでにGBP更新頻度を維持できる。</td><td>URLは設定不可。複数画像は先頭1枚のみ。</td></tr></table></div>
+<h3 id="2-2-特定キーワードの使い方">2-2. 特定キーワードの使い方</h3>
+<p><strong>1. </strong>ビルアイコンから「設定」&gt;「店舗」を開き、対象店舗を選ぶ。</p>
+<p><strong>2. </strong>各SNSの連携項目にある「特定のキーワード」にキーワードを入力する。</p>
+<p><strong>3. </strong>設定時は「#」を付けず、キーワードだけを入力する。</p>
+<p><strong>4. </strong>「特定キーワードを使う」にチェックを入れる。</p>
+<p><strong>5. </strong>複数キーワードは半角カンマ区切りで登録する。</p>
+<div class="table-wrap"><table><tr><th>反映条件 SNS投稿に「#ランチ」のようなハッシュタグが入っている時だけ反映されます。本文にランチと書いただけでは反映されません。複数キーワードはOR条件です。</th></tr></table></div>
+<p><strong>FAQ画像: 特定キーワード設定</strong></p>
+<p><figure><img src="../assets/manual-images/17-sns連携機能-cca013feda.png" alt="SNS連携機能の画面説明"></figure></p>
+<p><strong>・</strong>店舗ごとにGBPへ反映する投稿を絞り込めます。</p>
+<p><strong>・</strong>全店共通ハッシュタグと店舗限定ハッシュタグを分けると、投稿の出し分けがしやすくなります。</p>
+<h2 id="3-sns投稿時の注意点">3. SNS投稿時の注意点</h2>
+<p>SNSからGBPへ自動反映する場合、反映タイミングと媒体ごとの制限を理解しておく必要があります。「投稿したのにGoogleに出ない」と感じる時の多くは、バッチ処理待ち、文字数、画像枚数、投稿種別が原因です。</p>
+<div class="table-wrap"><table><tr><th>項目</th><th>FAQでの案内</th><th>現場での見方</th></tr><tr><td>反映タイミング</td><td>Instagram 1:00/6:00/11:00/16:00/21:00、Facebook 10:00/14:00/19:00、Xは3時間ごと</td><td>すぐ反映されないことがある</td></tr><tr><td>初回連携当日</td><td>連携日の前日0:00以降の投稿が反映対象</td><td>古い投稿まで全て反映されるわけではない</td></tr><tr><td>画像</td><td>複数画像は1番目のみGBPに反映</td><td>料理写真は1枚目を必ず見せたい画像にする</td></tr><tr><td>Instagram投稿種別</td><td>ストーリー、リール等はGBP反映されない</td><td>通常投稿中心で運用する</td></tr><tr><td>文字数</td><td>GBP最新情報は1,500字まで</td><td>長文SNS投稿は反映できない場合がある</td></tr></table></div>
+<h3 id="3-1-dashboardから投稿する場合">3-1. Dashboardから投稿する場合</h3>
+<p><strong>・</strong>投稿種類は「最新情報」「イベント」「特典」を使い分けます。</p>
+<p><strong>・</strong>イベントは開催期間がある催事、特典はクーポンや割引、最新情報は通常のお知らせに向いています。</p>
+<p><strong>・</strong>SNSとGBPへ同時投稿する場合は、日付、価格、リンク先、画像、電話番号の扱いを確認します。</p>
+<p><strong>FAQ画像: Dashboardから最新情報を投稿する</strong></p>
+<p><figure><img src="../assets/manual-images/17-sns連携機能-15ff651f32.png" alt="SNS連携機能の画面説明"></figure></p>
+<p><strong>・</strong>最新情報は、通常のお知らせや新メニュー告知に使います。</p>
+<p><strong>・</strong>公開前に、投稿先媒体と内容を確認します。</p>
+<h3 id="3-2-電話番号・削除・ポリシー違反">3-2. 電話番号・削除・ポリシー違反</h3>
+<p><strong>・</strong>電話番号投稿の除外設定を使うと、SNS投稿時に電話番号を除外できます。</p>
+<p><strong>・</strong>除外設定OFFの場合の挙動は、投稿内容に電話番号が含まれる可能性があるため事前確認が必要です。</p>
+<p><strong>・</strong>Dashboardで投稿を削除しても、Google、Yahoo!、Facebook、Instagram、Xなど媒体ごとに反映のされ方が異なります。</p>
+<p><strong>・</strong>ポリシー違反投稿一覧では、媒体側のルールで反映できなかった投稿を確認します。</p>
+<p><strong>・</strong>画像サイズは媒体ごとの仕様に影響します。投稿前に画像が極端に小さい、縦長すぎる、横長すぎる場合は調整します。</p>
+<p><strong>FAQ画像: ポリシー違反投稿一覧</strong></p>
+<p><figure><img src="../assets/manual-images/17-sns連携機能-12c55423d4.png" alt="SNS連携機能の画面説明"></figure></p>
+<p><strong>・</strong>投稿が反映されない時は、エラーやポリシー違反の一覧を確認します。</p>
+<p><strong>・</strong>原因が分からない場合はFoodLuck側へ確認します。</p>
+<h2 id="4-facebook・instagram連携">4. Facebook・Instagram連携</h2>
+<p>Instagram連携は、運用方式によって「Instagram単体連携」と「Facebook経由連携」を使い分けます。飲食店現場では、アカウント権限やFacebookページの有無でつまずきやすいため、事前準備を確認します。</p>
+<div class="table-wrap"><table><tr><th>連携方法</th><th>向いている運用</th><th>注意点</th></tr><tr><td>Instagram単体連携</td><td>Instagram投稿をGBPへ反映したい</td><td>連携できるアカウントは1つ。既存連携が切れる場合あり。</td></tr><tr><td>Instagram Facebook経由</td><td>DashboardからInstagramにも投稿したい</td><td>InstagramプロアカウントとFacebookページの連携が必要。</td></tr><tr><td>Facebook連携</td><td>Facebookページへ投稿したい</td><td>ページ権限、オプトイン、連携対象チェックを確認。</td></tr></table></div>
+<h3 id="4-1-instagram単体連携">4-1. Instagram単体連携</h3>
+<p><strong>1. </strong>「設定」&gt;「店舗」から連携する店舗を開く。</p>
+<p><strong>2. </strong>Instagram連携の「Instagramアカウント連携（単体）」を押す。</p>
+<p><strong>3. </strong>警告を確認し、新規連携で問題なければ確認する。</p>
+<p><strong>4. </strong>Instagramへログインし、許可する。</p>
+<p><strong>5. </strong>Dashboardへ戻り、連携アカウントとステータスがアクティブか確認する。</p>
+<p><strong>6. </strong>「連携対象」にチェックを入れる。</p>
+<p><strong>FAQ画像: Instagram単体連携の入口</strong></p>
+<p><figure><img src="../assets/manual-images/17-sns連携機能-12db5874ba.png" alt="SNS連携機能の画面説明"></figure></p>
+<p><strong>・</strong>Instagram単体連携は、SNS投稿をGBPへ反映する運用向けです。</p>
+<p><strong>・</strong>連携対象にチェックがないと投稿取得されません。</p>
+<h3 id="4-2-facebook経由・facebookページ連携">4-2. Facebook経由・Facebookページ連携</h3>
+<p><strong>・</strong>InstagramをFacebook経由で連携する場合、InstagramプロアカウントとFacebookビジネスページのリンクが必要です。</p>
+<p><strong>・</strong>Facebookページは、PCのFacebook、スマホのFacebook、Instagramのプロフィール編集から作成できます。</p>
+<p><strong>・</strong>FacebookページとInstagramを連携する方法は、PC、Facebookアプリ、Instagramアプリの3通りがあります。</p>
+<p><strong>・</strong>Facebook連携では、Facebookログイン、ページのオプトイン、保存、連携対象チェックを確認します。</p>
+<p><strong>・</strong>InstagramのユーザーネームやURLを変更した場合は、連携状況に影響する可能性があるためFoodLuck側へ確認します。</p>
+<p><strong>FAQ画像: Instagram Facebook経由連携</strong></p>
+<p><figure><img src="../assets/manual-images/17-sns連携機能-c78921df2c.png" alt="SNS連携機能の画面説明"></figure></p>
+<p><strong>・</strong>Facebook経由連携では、対象ページやInstagramアカウントの許可範囲を確認します。</p>
+<p><strong>・</strong>複数店舗で使う場合は、どの店舗にどのページを紐づけるかを整理します。</p>
+<p><strong>FAQ画像: Facebook連携の連携対象</strong></p>
+<p><figure><img src="../assets/manual-images/17-sns連携機能-f88cd524d1.png" alt="SNS連携機能の画面説明"></figure></p>
+<p><strong>・</strong>最後に連携対象へチェックを入れて完了します。</p>
+<p><strong>・</strong>チェック漏れがあると投稿対象にならないため、連携後に必ず確認します。</p>
+<h3 id="4-3-igからgbpへの投稿・写真管理">4-3. IGからGBPへの投稿・写真管理</h3>
+<p><strong>・</strong>IG→GBP投稿では、Instagram投稿をGBPの投稿へ反映できます。</p>
+<p><strong>・</strong>IG→GBP写真管理では、Instagram投稿画像をGBP写真として扱う機能があります。</p>
+<p><strong>・</strong>ハッシュタグなし投稿の扱いは設定内容により変わります。自動反映したくない投稿がある場合は特定キーワードを使います。</p>
+<p><strong>・</strong>Instagram投稿がGoogleへ反映されない時は、連携対象、投稿種別、文字数、画像、バッチ処理時間、特定キーワードを確認します。</p>
+<h2 id="5-x-旧twitter-連携">5. X（旧Twitter）連携</h2>
+<p>X連携は、アカウント連携だけでなくTwitter Developer Portal側の設定やBasicプラン契約が関わる場合があります。飲食店側だけで完結しにくい部分があるため、FoodLuck側と確認しながら進めます。</p>
+<p><strong>1. </strong>FoodLuck MEOの対象店舗を開き、X連携の設定箇所を確認する。</p>
+<p><strong>2. </strong>必要に応じてXアカウント連携を開始する。</p>
+<p><strong>3. </strong>Developer Portalでアプリ・キー・権限などを設定する。</p>
+<p><strong>4. </strong>Basicプラン契約が必要な場合は、費用や契約主体を確認する。</p>
+<p><strong>5. </strong>連携後、投稿テストと反映状況を確認する。</p>
+<div class="table-wrap"><table><tr><th>X連携ができない時 FAQでは、X側のAPI利用条件やDeveloper Portal設定が関係する案内があります。店舗側で分からない場合は、無理に変更せずFoodLuck側へ確認してください。</th></tr></table></div>
+<p><strong>FAQ画像: X Developer Portalの操作</strong></p>
+<p><figure><img src="../assets/manual-images/17-sns連携機能-efd6c11993.png" alt="SNS連携機能の画面説明"></figure></p>
+<p><strong>・</strong>X連携は外部開発者画面の操作が必要になる場合があります。</p>
+<p><strong>・</strong>APIキーやトークンに関わるため、権限情報の扱いに注意します。</p>
+<p><strong>FAQ画像: FoodLuck MEOからX投稿連携</strong></p>
+<p><figure><img src="../assets/manual-images/17-sns連携機能-a1668d0272.png" alt="SNS連携機能の画面説明"></figure></p>
+<p><strong>・</strong>Dashboard側でX連携の投稿対象を確認します。</p>
+<p><strong>・</strong>特定キーワードや投稿先を間違えないようにします。</p>
+<p><strong>・</strong>Xでも特定キーワード（ハッシュタグ）によりGBP反映を制御できます。</p>
+<p><strong>・</strong>キーワードは設定後すぐではなく、反映に時間がかかる場合があります。</p>
+<p><strong>・</strong>連携できない場合は、ログインアカウント、Developer Portal設定、Basicプラン、権限を確認します。</p>
+<h2 id="6-instagram分析機能">6. Instagram分析機能</h2>
+<p>Instagram分析機能では、Instagramの投稿成果や競合、ファンユーザー、コメント、投稿カレンダー、ハッシュタグを確認できます。投稿を出すだけで終わらせず、どの投稿が来店や認知につながりやすいかを見るための機能です。</p>
+<div class="table-wrap"><table><tr><th>画面</th><th>見られること</th><th>飲食店での使い方</th></tr><tr><td>Instagramダッシュボード</td><td>アカウント全体の推移</td><td>月次でフォロワーや反応を確認</td></tr><tr><td>インサイト情報</td><td>投稿、リール、ストーリーズの反応</td><td>保存・リーチが高い投稿を把握</td></tr><tr><td>投稿詳細</td><td>コメント、いいね、リーチ、保存、シェア等</td><td>次の投稿テーマを決める</td></tr><tr><td>競合分析</td><td>競合アカウントの投稿や反応</td><td>近隣店の投稿頻度・反応を比較</td></tr><tr><td>ファンユーザーリスト</td><td>反応の多いユーザー</td><td>常連化や来店導線のヒントにする</td></tr><tr><td>コメント分析</td><td>コメント傾向</td><td>お客様の反応を拾う</td></tr><tr><td>投稿カレンダー</td><td>投稿日時や投稿内容</td><td>投稿頻度の偏りを確認</td></tr><tr><td>ハッシュタグ分析</td><td>ハッシュタグ別の投稿数、いいね、コメント等</td><td>集客に効くタグを見つける</td></tr></table></div>
+<p><strong>FAQ画像: Instagram分析の連携対象</strong></p>
+<p><figure><img src="../assets/manual-images/17-sns連携機能-0b9194cc15.png" alt="SNS連携機能の画面説明"></figure></p>
+<p><strong>・</strong>分析機能を使うには、対象アカウント側の連携状態を確認します。</p>
+<p><strong>・</strong>表示されない場合は、分析連携対象のチェックや権限を確認します。</p>
+<p><strong>FAQ画像: Instagramインサイト情報</strong></p>
+<p><figure><img src="../assets/manual-images/17-sns連携機能-373f847c45.png" alt="SNS連携機能の画面説明"></figure></p>
+<p><strong>・</strong>投稿、リール、ストーリーズごとに反応を見ます。</p>
+<p><strong>・</strong>リーチは見た人数、インプレッションは表示回数です。</p>
+<div class="table-wrap"><table><tr><th>見るべき数字 飲食店では、いいね数だけでなく、保存数、リーチ、コメント、シェア、投稿後の来店導線を合わせて見ます。保存される投稿は、メニュー、価格、営業時間、アクセスなど来店前に見返したい内容であることが多いです。</th></tr></table></div>
+<h2 id="7-line連携">7. LINE連携</h2>
+<p>LINE連携は、LINE公式アカウントとFoodLuck MEOを接続し、メッセージ配信や自動応答を行う機能です。お客様へ直接届くため、投稿以上に配信内容・対象・日時の確認が大切です。</p>
+<h3 id="7-1-事前準備と必要情報">7-1. 事前準備と必要情報</h3>
+<p><strong>・</strong>LINE公式アカウントを開設します。</p>
+<p><strong>・</strong>LINE Developersで開発者アカウント、プロバイダー、チャネルを作成します。</p>
+<p><strong>・</strong>チャネルID、チャネルシークレット、あなたのユーザーID、チャネルアクセストークンを確認します。</p>
+<p><strong>・</strong>Webhook URLに https://app.meo-dash.com/get_event_webhook を設定します。</p>
+<p><strong>・</strong>セグメント配信等を使う場合はLIFF IDを作成し、FoodLuck MEOへ登録します。</p>
+<p><strong>FAQ画像: LINE連携に必要な情報</strong></p>
+<p><figure><img src="../assets/manual-images/17-sns連携機能-6dfcb3cb1f.png" alt="SNS連携機能の画面説明"></figure></p>
+<p><strong>・</strong>LINE Developersで必要情報を確認します。</p>
+<p><strong>・</strong>トークンやシークレットは重要情報のため、扱いに注意します。</p>
+<p><strong>FAQ画像: FoodLuck MEOへLINE情報を入力</strong></p>
+<p><figure><img src="../assets/manual-images/17-sns連携機能-fca606b5c4.png" alt="SNS連携機能の画面説明"></figure></p>
+<p><strong>・</strong>店舗詳細画面でLINE連携情報を入力します。</p>
+<p><strong>・</strong>入力後に登録する前、各値が正しいか確認します。</p>
+<h3 id="7-2-line公式でできる配信">7-2. LINE公式でできる配信</h3>
+<div class="table-wrap"><table><tr><th>機能</th><th>できること</th><th>注意点</th></tr><tr><td>メッセージ配信</td><td>すべての友だち、属性、セグメントへ配信</td><td>即時・予約、配信先、内容を確認</td></tr><tr><td>あいさつメッセージ</td><td>友だち追加直後に自動送信</td><td>第一印象を決めるため丁寧に作る</td></tr><tr><td>応答メッセージ</td><td>受信メッセージに自動返信</td><td>キーワード完全一致、時間帯、ON/OFFを確認</td></tr><tr><td>リッチビデオメッセージ</td><td>動画を自動再生し、アクションへ誘導</td><td>動画・ボタン・遷移先を確認</td></tr></table></div>
+<p><strong>FAQ画像: LINEメッセージ配信</strong></p>
+<p><figure><img src="../assets/manual-images/17-sns連携機能-e1640486d0.png" alt="SNS連携機能の画面説明"></figure></p>
+<p><strong>・</strong>タイトルは管理用、配信先はすべての友だち・属性・セグメントから選びます。</p>
+<p><strong>・</strong>右側プレビューで見え方を確認してから配信します。</p>
+<div class="table-wrap"><table><tr><th>配信前の確認 LINE配信はお客様へ直接届きます。誤配信を防ぐため、配信先、日時、クーポン条件、画像、リンク、誤字を必ず確認してください。</th></tr></table></div>
+<h2 id="8-反映されない・うまくいかない時">8. 反映されない・うまくいかない時</h2>
+<div class="table-wrap"><table><tr><th>困ったこと</th><th>まず確認すること</th><th>対応</th></tr><tr><td>SNS投稿がGBPに出ない</td><td>バッチ処理時間、連携対象、特定キーワード、文字数、投稿種別</td><td>時間を置いて確認し、条件が合わなければ修正</td></tr><tr><td>Instagram投稿がGoogleに出ない</td><td>単体/FB経由の運用方式、通常投稿か、先頭画像、1500字以内か</td><td>リール・ストーリーは対象外として運用を見直す</td></tr><tr><td>X連携できない</td><td>Developer Portal、Basicプラン、権限、ログインアカウント</td><td>FoodLuck側へ確認</td></tr><tr><td>投稿削除が反映されない</td><td>削除元媒体と反映先媒体</td><td>媒体ごとの仕様差を確認</td></tr><tr><td>ポリシー違反になる</td><td>画像、文言、URL、電話番号、媒体ルール</td><td>投稿内容を修正して再投稿</td></tr><tr><td>Instagram分析が見えない</td><td>分析連携対象、権限、対象アカウント</td><td>連携状態を確認</td></tr><tr><td>LINE配信できない</td><td>チャネル情報、アクセストークン、Webhook、LIFF ID</td><td>設定値を確認し、FoodLuckへ相談</td></tr></table></div>
+<h2 id="9-sns運用チェックリスト">9. SNS運用チェックリスト</h2>
+<p><strong>□ </strong>Dashboard投稿とSNS投稿のどちらを中心にするか決めている</p>
+<p><strong>□ </strong>Instagramは単体連携かFacebook経由連携かを決めている</p>
+<p><strong>□ </strong>FacebookページとInstagramプロアカウントの連携状態を確認した</p>
+<p><strong>□ </strong>連携対象にチェックが入っている</p>
+<p><strong>□ </strong>特定キーワードは「#なし」で登録し、SNS投稿側はハッシュタグ付きで投稿している</p>
+<p><strong>□ </strong>複数店舗で同じSNSを使う場合、全店共通タグと店舗限定タグを分けている</p>
+<p><strong>□ </strong>SNSからGBP反映時は先頭画像だけ反映される前提で投稿している</p>
+<p><strong>□ </strong>Instagramのストーリー・リールはGBP反映対象外であることを理解している</p>
+<p><strong>□ </strong>GBPへ反映する投稿は1,500字以内に収めている</p>
+<p><strong>□ </strong>LINE配信前に、配信先・日時・内容・リンク・クーポン条件を確認している</p>
+<h2 id="10-この資料に反映したfaq記事">10. この資料に反映したFAQ記事</h2>
+<div class="table-wrap"><table><tr><th>No.</th><th>カテゴリ</th><th>FAQ記事</th><th>本文での反映先</th></tr><tr><td>1</td><td>SNS連携前にご確認ください</td><td>SNS連携の運用フローに関して</td><td>1-3. 連携前・注意点</td></tr><tr><td>2</td><td>SNS連携前にご確認ください</td><td>SNS投稿注意点</td><td>1-3. 連携前・注意点</td></tr><tr><td>3</td><td>SNS連携前にご確認ください</td><td>特定キーワードについて</td><td>1-3. 連携前・注意点</td></tr><tr><td>4</td><td>Facebook・Instagram連携</td><td>Instagramアカウント連携（単体）の方法</td><td>4. Facebook・Instagram連携</td></tr><tr><td>5</td><td>Facebook・Instagram連携</td><td>Instagramアカウント連携（Facebook経由）の方法</td><td>4. Facebook・Instagram連携</td></tr><tr><td>6</td><td>Facebook・Instagram連携</td><td>Facebookページの作成方法</td><td>4. Facebook・Instagram連携</td></tr><tr><td>7</td><td>Facebook・Instagram連携</td><td>FacebookページとInstagramの連携方法</td><td>4. Facebook・Instagram連携</td></tr><tr><td>8</td><td>Facebook・Instagram連携</td><td>SNS連携：Facebook連携の方法</td><td>4. Facebook・Instagram連携</td></tr><tr><td>9</td><td>Facebook・Instagram連携</td><td>IG→GBP投稿について</td><td>4. Facebook・Instagram連携</td></tr><tr><td>10</td><td>Facebook・Instagram連携</td><td>IG→GBP写真管理について</td><td>4. Facebook・Instagram連携</td></tr><tr><td>11</td><td>Facebook・Instagram連携</td><td>IG → GBPの「ハッシュタグなし投稿」について</td><td>4. Facebook・Instagram連携</td></tr><tr><td>12</td><td>Facebook・Instagram連携</td><td>連携後にInstagramのユーザーネーム・URLを変更された際のご対応について</td><td>4. Facebook・Instagram連携</td></tr><tr><td>13</td><td>Facebook・Instagram連携</td><td>Instagramの投稿がGoogleに反映がされない場合</td><td>4. Facebook・Instagram連携</td></tr><tr><td>14</td><td>X（旧Twitter）連携</td><td>X連携ができない時の解決策</td><td>5. X連携</td></tr><tr><td>15</td><td>X（旧Twitter）連携</td><td>X（旧Twitter）連携：特定キーワード（ハッシュタグ）の設定と反映について</td><td>5. X連携</td></tr><tr><td>16</td><td>X（旧Twitter）連携</td><td>X（旧Twitter）アカウント連携に関して</td><td>5. X連携</td></tr><tr><td>17</td><td>X（旧Twitter）連携</td><td>X（旧Twitter）アカウント連携_Twitter Developer Portalの操作方法</td><td>5. X連携</td></tr><tr><td>18</td><td>X（旧Twitter）連携</td><td>X（旧Twitter）アカウント連携_Twitter Developer PortalのBasicプラン契約方法</td><td>5. X連携</td></tr><tr><td>19</td><td>X（旧Twitter）連携</td><td>SNS投稿連携方法：X（旧Twitter）編</td><td>5. X連携</td></tr><tr><td>20</td><td>投稿方法</td><td>SNS投稿で「電話番号投稿の除外」設定OFFのときの挙動</td><td>3. 投稿方法・注意</td></tr><tr><td>21</td><td>投稿方法</td><td>Dashboardで投稿を削除した際の各媒体への反映について</td><td>3. 投稿方法・注意</td></tr><tr><td>22</td><td>投稿方法</td><td>ポリシー違反投稿一覧</td><td>3. 投稿方法・注意</td></tr><tr><td>23</td><td>投稿方法</td><td>SNS投稿で電話番号投稿の除外設定</td><td>3. 投稿方法・注意</td></tr><tr><td>24</td><td>投稿方法</td><td>SNS投稿：画像のサイズの仕様について</td><td>3. 投稿方法・注意</td></tr><tr><td>25</td><td>投稿方法</td><td>Dashboad上からSNSとGoogleビジネスプロフィールに投稿をする（イベント）</td><td>3. 投稿方法・注意</td></tr><tr><td>26</td><td>投稿方法</td><td>Dashboard上からSNSとGoogleビジネスプロフィールに投稿をする（特典）</td><td>3. 投稿方法・注意</td></tr><tr><td>27</td><td>投稿方法</td><td>Dashboard上からSNSとGoogleビジネスプロフィールに投稿をする（最新情報）</td><td>3. 投稿方法・注意</td></tr><tr><td>28</td><td>Instagram分析機能</td><td>Instagram分析機能をご使用いただく方法</td><td>6. Instagram分析</td></tr><tr><td>29</td><td>Instagram分析機能</td><td>Instagram分析機能_Instagramダッシュボード</td><td>6. Instagram分析</td></tr><tr><td>30</td><td>Instagram分析機能</td><td>Instagram分析機能_競合分析 詳細</td><td>6. Instagram分析</td></tr><tr><td>31</td><td>Instagram分析機能</td><td>Instagram分析機能_競合分析 競合店舗登録方法</td><td>6. Instagram分析</td></tr><tr><td>32</td><td>Instagram分析機能</td><td>Instagram分析機能_ファンユーザーリスト</td><td>6. Instagram分析</td></tr><tr><td>33</td><td>Instagram分析機能</td><td>Instagram分析機能_注意事項</td><td>6. Instagram分析</td></tr><tr><td>34</td><td>Instagram分析機能</td><td>Instagram分析機能_コメント分析</td><td>6. Instagram分析</td></tr><tr><td>35</td><td>Instagram分析機能</td><td>Instagram分析機能_投稿カレンダー</td><td>6. Instagram分析</td></tr><tr><td>36</td><td>Instagram分析機能</td><td>Instagram分析機能_ハッシュタグ分析 詳細</td><td>6. Instagram分析</td></tr><tr><td>37</td><td>Instagram分析機能</td><td>Instagram分析機能_ハッシュタグ分析 ハッシュタグ登録方法</td><td>6. Instagram分析</td></tr><tr><td>38</td><td>Instagram分析機能</td><td>Instagram分析機能_インサイト情報 投稿詳細</td><td>6. Instagram分析</td></tr><tr><td>39</td><td>Instagram分析機能</td><td>Instagram分析機能_インサイト情報</td><td>6. Instagram分析</td></tr><tr><td>40</td><td>LINE連携</td><td>【事前準備】LINE連携のために準備が必要な点</td><td>7. LINE連携</td></tr><tr><td>41</td><td>LINE連携</td><td>LINE連携のために必要な情報と確認方法</td><td>7. LINE連携</td></tr><tr><td>42</td><td>LINE連携</td><td>LINE公式アカウントとMEODashboardの連携方法について</td><td>7. LINE連携</td></tr><tr><td>43</td><td>LINE連携</td><td>LINE Webhook URLの設定方法</td><td>7. LINE連携</td></tr><tr><td>44</td><td>LINE連携</td><td>LINE LIF IDの作成方法</td><td>7. LINE連携</td></tr><tr><td>45</td><td>LINE連携</td><td>【LINE連携機能】メッセージ配信</td><td>7. LINE連携</td></tr><tr><td>46</td><td>LINE連携</td><td>【LINE連携機能】あいさつメッセージの設定</td><td>7. LINE連携</td></tr><tr><td>47</td><td>LINE連携</td><td>【LINE連携機能】応答メッセージの設定</td><td>7. LINE連携</td></tr><tr><td>48</td><td>LINE連携</td><td>【LINE連携機能】リッチビデオメッセージの設定</td><td>7. LINE連携</td></tr></table></div>
+    </article>
+    <aside class="related-panel">
+      <p class="eyebrow">同じカテゴリ</p>
+      <nav><a href="01-基本操作.html">基本操作</a>
+<a href="02-初期設定.html">初期設定</a>
+<a href="03-その他.html">その他</a>
+<a href="04-店舗基本情報.html">店舗基本情報</a>
+<a href="05-写真管理.html">写真管理</a>
+<a href="06-投稿.html">投稿</a>
+<a href="07-クチコミ返信.html">クチコミ返信</a>
+<a href="08-クチコミ分析.html">クチコミ分析</a>
+<a href="09-インサイト.html">インサイト</a>
+<a href="10-順位.html">順位</a>
+<a href="11-クチコミ促進.html">クチコミ促進</a>
+<a href="12-クーポン管理.html">クーポン管理</a>
+<a href="13-webサイト最適化機能.html">WEBサイト最適化機能</a>
+<a href="14-店舗ページ限定機能.html">店舗ページ限定機能</a>
+<a href="15-グループ管理.html">グループ管理</a>
+<a href="16-データダウンロード.html">データダウンロード</a>
+<a href="18-各媒体連携機能.html">各媒体連携機能</a>
+<a href="19-googleについて.html">Googleについて</a></nav>
+    </aside>
+  </main>
+  <script src="../assets/manual.js"></script>
+</body>
+</html>
